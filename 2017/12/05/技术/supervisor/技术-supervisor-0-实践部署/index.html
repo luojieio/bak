@@ -93,7 +93,7 @@
 <meta property="og:site_name" content="luojieio">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://luojieio.github.io/2017/12/05/技术/supervisor/技术-supervisor-0-实践部署/0.png">
-<meta property="og:updated_time" content="2018-02-27T12:54:16.984Z">
+<meta property="og:updated_time" content="2018-02-27T12:59:45.790Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="技术-supervisor-0.实践部署">
 <meta name="twitter:image" content="https://luojieio.github.io/2017/12/05/技术/supervisor/技术-supervisor-0-实践部署/0.png">
@@ -417,37 +417,32 @@
 <p>5.创建子配置文件目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir conf</span><br></pre></td></tr></table></figure></p>
 <p>6.子配置文件程序配置如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[program:gts]</span><br><span class="line">command=/home/lm/NW_Head/test_ver/server/gts/GameTransitionServer start ; the program (relative uses PATH, can take args)</span><br><span class="line">directory=/home/lm/NW_Head/test_ver/server/gts ; directory to cwd to before exec (def no cwd)</span><br><span class="line">autostart=true ; start at supervisord start (default: true)</span><br><span class="line">startsecs=5 ; # of secs prog must stay up to be running (def. 1)</span><br><span class="line">startretries=3 ; max # of serial start failures when starting (default 3)</span><br><span class="line">autorestart=true ; when to restart if exited after running (def: unexpected)</span><br><span class="line">user=root ; setuid to this UNIX account to run the program</span><br><span class="line">redirect_stderr=true ; redirect proc stderr to stdout (default false)</span><br><span class="line">stdout_logfile=/tmp/gts_stdout.log ; stdout log path, NONE for none; default AUTO</span><br><span class="line">stdout_logfile_maxbytes=20MB ; max # logfile bytes b4 rotation (default 50MB)</span><br><span class="line">stdout_logfile_backups=20 ; # of stdout logfile backups (0 means none, default 10)</span><br><span class="line">killasgroup=true    ;子进程是否kill的开关（重要）</span><br><span class="line">stopasgroup=true    ;子进程是否停止的开关（重要）</span><br></pre></td></tr></table></figure></p>
 <hr>
-<h3 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h3><ol>
+<h3 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h3><ul>
 <li>所管应用必须是前台运行</li>
-<li>所托管的应用可以是脚本，因为脚本也是程序，同理脚本也需要是前台运行的，且有执行终端如：<code>#!/bin/bash</code> 或直接<code>/bin/bash command.sh</code>之类</li>
-<li>supervisor的应用程序配置文件中command中指定方法：如果command没有包含一个前置/，它会在PATH变量中找这个命令，所以在command中应该这么写</li>
-</ol>
-<ul>
+<li>所管的应用可以是脚本，因为脚本也是程序，同理脚本也需要是前台运行的，且有执行终端如：<code>#!/bin/bash</code> 或直接<code>/bin/bash command.sh</code>之类</li>
+<li>supervisor的应用程序配置文件中command中指定方法：如果command没有包含一个前置/，它会在PATH变量中找这个命令，所以在command中应该这么写<ul>
 <li>方法1.完整的绝对路径</li>
 <li>方法2.类似./install.sh</li>
 <li>方法3./bin/bash install.sh</li>
 </ul>
-<ol>
+</li>
 <li><code>supervisorctl update</code>或<code>supervisorctl reread + supervisorctl add/remove</code></li>
 <li><code>supervisord</code>关了所管的应用也会关了</li>
 <li>如果提示命令无法找到，使用绝对路径来执行，因为它是根据python的<code>PATH</code>来找命令的。</li>
-<li>这三个参数不影响执行结果</li>
-</ol>
-<ul>
+<li>这三个参数不影响执行结果<ul>
 <li>startsecs=5         </li>
 <li>startretries=3            </li>
 <li>autorestart=true</li>
 </ul>
-<ol>
-<li>特别注意是当使用脚本时，supervisor托管的是脚本，所以你stop的是脚本，而不是脚本启动的程序，但是当你杀掉程序时，托管的脚本也会停掉，所以它们还是有关联的，只不过你stop托管的脚本时，并不能停止真正的程序这点比较麻烦<br>而且你有时把脚本当command启动时有问题时，如果报错，建议你去看看是否已经有启动的程序，因为有脚本所带动的程序时，所以，当你stop脚本时，因为程序并没有停止，你再start脚本时，因为原来的程序并没有退出，所以报错起不来，而不是因为supervior不支持脚本<br><a href="https://stackoverflow.com/questions/22421140/how-to-set-supervisor-to-run-a-shell-script" target="_blank" rel="noopener">https://stackoverflow.com/questions/22421140/how-to-set-supervisor-to-run-a-shell-script</a><br>脚本启动的子进程要stop，需要在gate.ini中添加</li>
-</ol>
-<ul>
+</li>
+<li>特别注意是当使用脚本时，supervisor托管的是脚本，所以你stop的是脚本，而不是脚本启动的程序，但是当你杀掉程序时，托管的脚本也会停掉，所以它们还是有关联的，只不过你stop托管的脚本时，并不能停止真正的程序这点比较麻烦，而且你有时把脚本当command启动时有问题时，如果报错，建议你去看看是否已经有启动的程序，因为有脚本所带动的程序时，所以，当你stop脚本时，因为程序并没有停止，你再start脚本时，因为原来的程序并没有退出，所以报错起不来，而不是因为supervior不支持脚本。（<a href="https://stackoverflow.com/questions/22421140/how-to-set-supervisor-to-run-a-shell-script）" target="_blank" rel="noopener">https://stackoverflow.com/questions/22421140/how-to-set-supervisor-to-run-a-shell-script）</a></li>
+<li>脚本启动的子进程要stop，需要在gate.ini中添加。（<a href="https://stackoverflow.com/questions/38650551/supervisor-exec-shell-script-and-stop）" target="_blank" rel="noopener">https://stackoverflow.com/questions/38650551/supervisor-exec-shell-script-and-stop）</a><ul>
 <li>killasgroup=true</li>
-<li>stopasgroup=true<br>即可把脚本所附带的子进程关掉不会遗留<br><a href="https://stackoverflow.com/questions/38650551/supervisor-exec-shell-script-and-stop" target="_blank" rel="noopener">https://stackoverflow.com/questions/38650551/supervisor-exec-shell-script-and-stop</a></li>
+<li>stopasgroup=true</li>
 </ul>
-<ol>
+</li>
 <li>supervisorctl中控制程序是以配置文件头中指定的名字来指定，不是文件名</li>
-</ol>
+</ul>
 
       
     </div>
