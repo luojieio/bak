@@ -122,7 +122,7 @@
 <meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/27.png">
 <meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/28.png">
 <meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/29.png">
-<meta property="og:updated_time" content="2018-03-02T08:55:51.202Z">
+<meta property="og:updated_time" content="2018-03-02T09:04:14.289Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="技术-mysql-2.安装">
 <meta name="twitter:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/mysql.png">
@@ -427,7 +427,7 @@
       
         <img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/mysql.png">
 <p><br><br><a id="more"></a></p>
-<h3 id="安装（linux平台-RPM包）"><a href="#安装（linux平台-RPM包）" class="headerlink" title="安装（linux平台-RPM包）"></a>安装（linux平台-RPM包）</h3><p>当前主流的Linux发行版本中都已经集成mysql，可以直接安装使用，但可能<code>版本较旧</code>。因此，可以前往官网下载最新版本的安装介质，有<code>rpm</code>包和<code>tar</code>包，官方不建议我们使用源码包安装，直接使用<code>rpm</code>包安装即可。</p>
+<h3 id="安装（linux平台-RPM包）"><a href="#安装（linux平台-RPM包）" class="headerlink" title="安装（linux平台-RPM包）"></a>安装（linux平台-RPM包）</h3><p>当前主流的<code>Linux发行版本</code>中都已经集成<code>mysql</code>，可以直接安装使用，但可能<code>版本较旧</code>。因此，可以前往官网下载最新版本的安装介质，有<code>rpm</code>包和<code>tar</code>包，官方不建议我们使用源码包安装，直接使用<code>rpm</code>包安装即可。</p>
 <p>rpm包来源方式分为两类：</p>
 <ul>
 <li>直接从操作系统发行版本中自带的<code>rpm</code>包进行安装</li>
@@ -520,12 +520,12 @@
 <p>5.将编译脚本放置在解压的安装包目录下<br>6.创建安装mysql的非可登录用户<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd mysql -s /sbin/nologin</span><br></pre></td></tr></table></figure></p>
 <p>7.运行<code>cmake.sh</code><br>8.根据提示错误信息进行一些包的补充安装（mysql5.7需要有boost类库，所以参数中需要增加此参数项）<br>9.<code>gmake</code>或<code>make install</code>直接一步编译与安装<br>10.安装完成后，进入到安装主目录，即<code>/usr/local/mysql</code>，可查看到相应文件<br>11.进入<code>/usr/local/mysql/support-files</code>目录，将<code>mysql.server</code>复制到<code>/etc/init.d/</code>目录下作为服务，方便以后启停mysql服务<br>12.将<code>/usr/local/mysql/support-files</code>下的<code>my.cnf</code>拷贝到<code>/etc/my.cnf</code>作为<code>mysql</code>的主配置文件（通常发行版本中已经自带了该配置文件，可以直接覆盖替换），并进行相关的配置选项进行修改（实际上你不指定my.cnf配置文件，mysql的服务也可以启动起来，之所以指定my.cnf的原因是我们可以在配置文件中可以调配mysql的运行方式，所以可以根据你的生产环境来自定义调配）</p>
 <p>13.将相关目录的所属用户与组设置为mysql以提供权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /var/lib/mysql</span><br><span class="line">chown -R mysql.mysql /usr/lib/mysql</span><br></pre></td></tr></table></figure></p>
-<p>14.（重要）使用源码安装的mysql，编译安装完成后需要进行初始化，才可以启动服务，切记。<br>到mysql的安装主目录，即/usr/local/mysql目录下执行：</p>
+<p>14.（重要）使用源码安装的mysql，编译安装完成后需要进行初始化，才可以启动服务，切记。<br>到mysql的安装主目录，即<code>/usr/local/mysql</code>目录下执行：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">5.6版本：</span><br><span class="line">/usr/local/mysql/scripts目录下</span><br><span class="line">有脚本文件：mysql_install_db  --help  #查看选项帮助</span><br><span class="line">执行脚本：mysql_install_db --basedir=/usr/local/mysql --datadir=/var/lib/mysql --no-defaults --user=mysql 	</span><br><span class="line">		</span><br><span class="line">5.7版本：</span><br><span class="line">/usr/local/mysql/bin目录下</span><br><span class="line">执行脚本：mysql_install_db（同上写法或执行下面的脚本）</span><br><span class="line">执行脚本./mysqld --defaults-file=/etc/my.cnf --user=mysql --initialize --initialize-insecure</span><br></pre></td></tr></table></figure>
 <p>15.启动mysql服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysql start</span><br></pre></td></tr></table></figure></p>
-<p>16.将/usr/local/mysql/bin目录添加到环境变量并使之生效，以使该bin目录下的工具可用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &apos;export PATH=$PATH:/usr/local/mysql/bin&apos; &gt;&gt; ~/.bash_profile</span><br><span class="line">. ~/.bash_profile</span><br></pre></td></tr></table></figure></p>
+<p>16.将<code>/usr/local/mysql/bin</code>目录添加到环境变量并使之生效，以使该<code>bin</code>目录下的工具可用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &apos;export PATH=$PATH:/usr/local/mysql/bin&apos; &gt;&gt; ~/.bash_profile</span><br><span class="line">. ~/.bash_profile</span><br></pre></td></tr></table></figure></p>
 <p>17.安装主机使用客户端连接测试<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure></p>
-<p>18.可以执行/usr/local/mysql/bin目录下的mysql_secure_installation（安全初始化）或mysqladmin（为root设置密码）</p>
+<p>18.可以执行<code>/usr/local/mysql/bin</code>目录下的<code>mysql_secure_installation</code>（安全初始化）或<code>mysqladmin</code>（为root设置密码）</p>
 <hr>
 <h3 id="安装（linux平台-SPRM包）"><a href="#安装（linux平台-SPRM包）" class="headerlink" title="安装（linux平台-SPRM包）"></a>安装（linux平台-SPRM包）</h3><p>1.整理好网络与<code>iptables</code>和<code>selinux</code><br>2.安装<code>yum groupinstall &#39;Development tools&#39;</code><br>3.前往官网在源代码部分找到<code>srpm</code>包并下载<br>4.创建用户（默认是以普通用户来构建，<code>root</code>用户也可以，但是需要做一些微调，为了避免不必要的麻烦，因此我们需要先创建一个普通用户）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd mysql</span><br></pre></td></tr></table></figure>
@@ -533,7 +533,7 @@
 <p>7.确认一下当前环境是否安装了rpm-build<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install rpm-build</span><br></pre></td></tr></table></figure></p>
 <p>8.切换到mysql这个普通用户<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - mysql</span><br></pre></td></tr></table></figure></p>
 <p>9.使用rpmbuild来创建出构建目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpmbuild ~</span><br></pre></td></tr></table></figure></p>
-<p>10.该rpmbuild目录下有相应生成的文件（如：BUILD  BUILDROOT  RPMS  SOURCES  SPECS  SRPMS），最后执行构建的时候需要这几个文件来存放生成的文件和一些中间文件</p>
+<p>10.该rpmbuild目录下有相应生成的文件（如：<code>BUILD</code>  <code>BUILDROOT</code>  <code>RPMS</code>  <code>SOURCES</code>  <code>SPECS</code>  <code>SRPMS</code>），最后执行构建的时候需要这几个文件来存放生成的文件和一些中间文件</p>
 <p>11.环境构建好之后，安装srpm包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh mysql-community-5.7.13-1.el6.src.rpm</span><br></pre></td></tr></table></figure></p>
 <p>12.修改<code>/home/mysql/rpmbuild/SPECS/</code>下的<code>mysql.spec</code>文件，根据自己的需要定制即可</p>
 <p>13.执行命令<code>rpmbuild -bb mysql.spec</code>就会根据<code>spec</code>中的配置构建出<code>rpm</code>包来了，如果有错误提示，根据错误提示安装相应的依赖包即可。查看选项帮助：<code>rpmbuild --help</code> </p>
