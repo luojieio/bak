@@ -106,7 +106,7 @@
 <meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-14-管理工具/11.png">
 <meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-14-管理工具/12.png">
 <meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-14-管理工具/13.png">
-<meta property="og:updated_time" content="2018-02-28T12:56:02.506Z">
+<meta property="og:updated_time" content="2018-03-02T09:50:08.547Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="技术-mysql-14.管理工具">
 <meta name="twitter:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-14-管理工具/mysql.png">
@@ -426,7 +426,7 @@
 <p>刷新系统权限表</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
 <hr>
-<p>##1.MySQL Administrator<br>先到 MySQL 网站下载 MySQL Administrator，并执行安装，安装后请执行 MySQL Administrator。执行后，您会看到下列画面：<br><img src="/2018/02/28/技术/mysql/技术-mysql-14-管理工具/1.png"></p>
+<h3 id="1-MySQL-Administrator"><a href="#1-MySQL-Administrator" class="headerlink" title="1.MySQL Administrator"></a>1.MySQL Administrator</h3><p>先到 MySQL 网站下载 MySQL Administrator，并执行安装，安装后请执行 MySQL Administrator。执行后，您会看到下列画面：<br><img src="/2018/02/28/技术/mysql/技术-mysql-14-管理工具/1.png"></p>
 <p>请在 Server Host 字段中输入 MySQL Server 的 IP，并输入使用者名称及密码。登入后的第一页，您可以看到目前 MySQL 的状态。如果您的 Server 和 MySQL Administrator 是在同一台机器上，则可以对 MySQL 进行更多的控制，例如停用 MySQL 等。</p>
 <p>MySQL Administrator 的管理界面使用上很容易，您可以自已点点看有什么功能，这里我们只介绍如何使用它来新增使用者。首先，请在右边选单中选取「User Administration」，接着在下图标示 2 的地方按鼠标右键，然后选择「Add new User」。<br><img src="/2018/02/28/技术/mysql/技术-mysql-14-管理工具/2.png"></p>
 <p>然后您就可以在 MySQL User 字段中输入使用者名称，并输入密码。输入完后请按「Apply changes」以套用设定。</p>
@@ -434,21 +434,20 @@
 <p>最后，我们要设定使用者可以从什么地方联机到 MySQL Server，请对着该使用者按右键，并选择「Add Host From Which The User Can Connect」，接着输入 IP 即可。<br><img src="/2018/02/28/技术/mysql/技术-mysql-14-管理工具/4.png"></p>
 <p>如果您要删除使用者，只要对着使用者按右键，并选取「Delete User」即可。</p>
 <hr>
-<p>##2.MySQL Query Browser</p>
-<p>MySQL Query Browser 一样可以从 MySQL 官方网站下载。下载并安装后，就可以执行 MySQL Query Browser 了。执行 Query Browser 后，会出现一个要求登入的窗口，同样的，您必须输入账号、密码及所要联机的主机。</p>
+<h3 id="2-MySQL-Query-Browser"><a href="#2-MySQL-Query-Browser" class="headerlink" title="2.MySQL Query Browser"></a>2.MySQL Query Browser</h3><p>MySQL Query Browser 一样可以从 MySQL 官方网站下载。下载并安装后，就可以执行 MySQL Query Browser 了。执行 Query Browser 后，会出现一个要求登入的窗口，同样的，您必须输入账号、密码及所要联机的主机。</p>
 <p>如果您已经安装了 MySQL Administrator，您可以直接从 MySQL Administrator 中执行 Query Browser，而且不必再输入账号密码：<br><img src="/2018/02/28/技术/mysql/技术-mysql-14-管理工具/5.png"></p>
 <p>在 MySQL Query Browser 中，我们可以建立删除数据库、数据表、查询数据库中的数据。如果您要建立一个新的数据库，请对着下图中 1 的位置按鼠标右键，再点选「Create New Schema」，最后输入数据库名称即可<br><img src="/2018/02/28/技术/mysql/技术-mysql-14-管理工具/6.png"></p>
 <p>建立了数据库后，我们可以再建资料表。请对着我们刚建立的数据库按鼠标右键，再点选「Create New Table」即出现下列窗口：<br><img src="/2018/02/28/技术/mysql/技术-mysql-14-管理工具/7.png"></p>
 <p>请在「Table Name」中输入表格名称，并在上图 2 的部份输入每一个字段的类别，最后按「Apply Changes」即可。建立数据库后，您就可以在 Query Browser 中输入、检视数据库中的数据。只要对着刚才建立的表格点二下，并点选「Execute」即可查看数据库中的数据。如果您要新增一笔数据，请点选下图中 3 的位置，并选择「Edit」即可进行编辑。<br><img src="/2018/02/28/技术/mysql/技术-mysql-14-管理工具/8.png"></p>
 <hr>
-<p>##3.phpMyAdmin<br>如果您想要使用网页接口的 MySQL 管理工具，您可以到 <a href="http://www.phpmyadmin.net/" target="_blank" rel="noopener">http://www.phpmyadmin.net/</a> 下载 phpMyAdmin。phpMyAdmin 的设定十分简单，您可以在网络上搜寻到很多相关文件<br>下载：<a href="http://www.phpmyadmin.net/" target="_blank" rel="noopener">http://www.phpmyadmin.net/</a><br><img src="/2018/02/28/技术/mysql/技术-mysql-14-管理工具/9.png"></p>
+<h3 id="3-phpMyAdmin"><a href="#3-phpMyAdmin" class="headerlink" title="3.phpMyAdmin"></a>3.phpMyAdmin</h3><p>如果您想要使用网页接口的 MySQL 管理工具，您可以到 <a href="http://www.phpmyadmin.net/" target="_blank" rel="noopener">http://www.phpmyadmin.net/</a> 下载 phpMyAdmin。phpMyAdmin 的设定十分简单，您可以在网络上搜寻到很多相关文件<br>下载：<a href="http://www.phpmyadmin.net/" target="_blank" rel="noopener">http://www.phpmyadmin.net/</a><br><img src="/2018/02/28/技术/mysql/技术-mysql-14-管理工具/9.png"></p>
 <hr>
-<p>##4.MySQL Workbench（推荐）<br>1.下载：<a href="http://www.mysql.com/downloads/workbench/" target="_blank" rel="noopener">http://www.mysql.com/downloads/workbench/</a><br>2.安装<br><img src="/2018/02/28/技术/mysql/技术-mysql-14-管理工具/10.png"><br>3.入门数据库实例 （sakila-db）<br>下载：<a href="http://mysql-tools.com/en/downloads/mysql-databases/4-sakila-db.html" target="_blank" rel="noopener">http://mysql-tools.com/en/downloads/mysql-databases/4-sakila-db.html</a><br><img src="/2018/02/28/技术/mysql/技术-mysql-14-管理工具/11.png"></p>
+<h3 id="4-MySQL-Workbench（推荐）"><a href="#4-MySQL-Workbench（推荐）" class="headerlink" title="4.MySQL Workbench（推荐）"></a>4.MySQL Workbench（推荐）</h3><p>1.下载：<a href="http://www.mysql.com/downloads/workbench/" target="_blank" rel="noopener">http://www.mysql.com/downloads/workbench/</a><br>2.安装<br><img src="/2018/02/28/技术/mysql/技术-mysql-14-管理工具/10.png"><br>3.入门数据库实例 （sakila-db）<br>下载：<a href="http://mysql-tools.com/en/downloads/mysql-databases/4-sakila-db.html" target="_blank" rel="noopener">http://mysql-tools.com/en/downloads/mysql-databases/4-sakila-db.html</a><br><img src="/2018/02/28/技术/mysql/技术-mysql-14-管理工具/11.png"></p>
 <hr>
-<p>##5.MySQLDumper<br>下载：<a href="http://www.mysqldumper.de/en/" target="_blank" rel="noopener">http://www.mysqldumper.de/en/</a></p>
+<h3 id="5-MySQLDumper"><a href="#5-MySQLDumper" class="headerlink" title="5.MySQLDumper"></a>5.MySQLDumper</h3><p>下载：<a href="http://www.mysqldumper.de/en/" target="_blank" rel="noopener">http://www.mysqldumper.de/en/</a></p>
 <p>MySQLDumper使用PHP开发的MySQL数据库备份恢复程序，解决了使用PHP进行大数据库备份和恢复的问题，数百兆的数据库都可以方便的备份恢复，不用担心网速太慢导致中间中断的问题，非常方便易用。这个软件是德国人开发的，还没有中文语言包。<br><img src="/2018/02/28/技术/mysql/技术-mysql-14-管理工具/12.png"></p>
 <hr>
-<p>##6.Navicat（推荐）<br>下载：<a href="http://www.navicat.com/" target="_blank" rel="noopener">http://www.navicat.com/</a></p>
+<h3 id="6-Navicat（推荐）"><a href="#6-Navicat（推荐）" class="headerlink" title="6.Navicat（推荐）"></a>6.Navicat（推荐）</h3><p>下载：<a href="http://www.navicat.com/" target="_blank" rel="noopener">http://www.navicat.com/</a></p>
 <p>Navicat是一个桌面版MySQL数据库管理和开发工具。和微软SQLServer的管理器很像，易学易用。Navicat使用图形化的用户界面，可以让用户使用和管理更为轻松。支持中文，有免费版本提供。<br><img src="/2018/02/28/技术/mysql/技术-mysql-14-管理工具/13.png"></p>
 
       
@@ -490,8 +489,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/02/28/技术/mysql/技术-mysql-15-主从复制/" rel="prev" title="技术-mysql-15.主从复制">
-                技术-mysql-15.主从复制 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/02/28/技术/nginx/技术-nginx-1-说明/" rel="prev" title="技术-nginx-1.说明">
+                技术-nginx-1.说明 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -543,8 +542,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/teaser.png"
@@ -559,7 +567,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">69</span>
+                <span class="site-state-item-count">68</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -648,6 +656,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-MySQL-Administrator"><span class="nav-number">1.</span> <span class="nav-text">1.MySQL Administrator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-MySQL-Query-Browser"><span class="nav-number">2.</span> <span class="nav-text">2.MySQL Query Browser</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-phpMyAdmin"><span class="nav-number">3.</span> <span class="nav-text">3.phpMyAdmin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-MySQL-Workbench（推荐）"><span class="nav-number">4.</span> <span class="nav-text">4.MySQL Workbench（推荐）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-MySQLDumper"><span class="nav-number">5.</span> <span class="nav-text">5.MySQLDumper</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Navicat（推荐）"><span class="nav-number">6.</span> <span class="nav-text">6.Navicat（推荐）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

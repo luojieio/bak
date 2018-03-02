@@ -93,7 +93,10 @@
 <meta property="og:site_name" content="luojieio">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-13-集群（负载均衡与高可用）/mysql.png">
-<meta property="og:updated_time" content="2018-02-28T12:46:59.823Z">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-13-集群（负载均衡与高可用）/1.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-13-集群（负载均衡与高可用）/2.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-13-集群（负载均衡与高可用）/3.png">
+<meta property="og:updated_time" content="2018-03-02T09:48:45.881Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="技术-mysql-13.集群（负载均衡与高可用）">
 <meta name="twitter:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-13-集群（负载均衡与高可用）/mysql.png">
@@ -398,6 +401,36 @@
       
         <img src="/2018/02/28/技术/mysql/技术-mysql-13-集群（负载均衡与高可用）/mysql.png">
 <p><br><br><a id="more"></a></p>
+<h2 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h2><hr>
+<p>参考自：<a href="http://www.toutiao.com/i6382146078900224514/?tt_from=mobile_qq&amp;utm_campaign=client_share&amp;app=news_article&amp;utm_source=mobile_qq&amp;iid=6169066316&amp;utm_medium=toutiao_ios" target="_blank" rel="noopener">http://www.toutiao.com/i6382146078900224514/?tt_from=mobile_qq&amp;utm_campaign=client_share&amp;app=news_article&amp;utm_source=mobile_qq&amp;iid=6169066316&amp;utm_medium=toutiao_ios</a></p>
+<p>作者：郭莺莺 </p>
+<hr>
+<h3 id="一、简述原理："><a href="#一、简述原理：" class="headerlink" title="一、简述原理："></a>一、简述原理：</h3><img src="/2018/02/28/技术/mysql/技术-mysql-13-集群（负载均衡与高可用）/1.png">
+<p>1、master记录二进制日志<br>2、slave的I/O线程读取master的二进制日志，并将其写入到中继日志中，SQL线程从中继日志中读取时间，并重放其中事件，更新slave的数据</p>
+<hr>
+<h3 id="二、准备工作："><a href="#二、准备工作：" class="headerlink" title="二、准备工作："></a>二、准备工作：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">关闭防火墙</span><br><span class="line">#server iptables stop</span><br><span class="line">关闭开机自启</span><br><span class="line">#chkconfig iptables off</span><br><span class="line">关闭selinux</span><br><span class="line">#setenforce 0</span><br><span class="line">在/etc/selinux/config 中，将SELINUX=enforcing改为SELINUX=disabled</span><br><span class="line">同步时间</span><br><span class="line">#ntpdate 202.120.2.101</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="三、安装mysql5-6"><a href="#三、安装mysql5-6" class="headerlink" title="三、安装mysql5.6"></a>三、安装mysql5.6</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#cd /usr/local/src</span><br><span class="line">解压mysql包</span><br><span class="line">#tar -zxf MySQL-5.6.23-1.el6.x86_64.rpm-bundle.tar</span><br><span class="line">用yum安装mysql，解决依赖关系</span><br><span class="line">#yum install MySQL-shared-compat-5.6.23-1.el6.x86_64.rpm</span><br><span class="line">#yum install MySQL-server-5.6.23-1.el6.x86_64.rpm</span><br><span class="line">#yum install MySQL-client-5.6.23-1.el6.x86_64.rpm</span><br><span class="line">#yum install MySQL-devel-5.6.23-1.el6.x86_64.rpm</span><br><span class="line">#yum install MySQL-shared-5.6.23-1.el6.x86_64.rpm</span><br><span class="line">创建数据目录</span><br><span class="line">#mkdir -pv /home/mydata/data</span><br><span class="line">#chown -R mysql.mysql /home/mydata</span><br><span class="line">#chmod -R +w /home/mydata</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="四、修改配置文件"><a href="#四、修改配置文件" class="headerlink" title="四、修改配置文件"></a>四、修改配置文件</h3><p><strong>配置文件【主】</strong><br>master配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line"># Remove leading # and set to the amount of RAM for the most important data</span><br><span class="line"># cache in MySQL. Start at 70% of total RAM for dedicated server, else 10%.</span><br><span class="line"># innodb_buffer_pool_size = 128M</span><br><span class="line"># Remove leading # to turn on a very important data integrity option: logging</span><br><span class="line"># changes to the binary log between backups.</span><br><span class="line"># log_bin</span><br><span class="line"># These are commonly set, remove the # and set as required.</span><br><span class="line"># basedir = .....</span><br><span class="line">datadir = /home/mydata/data</span><br><span class="line">port = 3306</span><br><span class="line"></span><br><span class="line">server_id = 1</span><br><span class="line">log-bin = master-bin</span><br><span class="line"></span><br><span class="line">pid-file = /home/mydata/data/mysql.pid</span><br><span class="line">socket = /var/lib/mysql/mysql.sock</span><br><span class="line">skip-external-locking</span><br><span class="line">key_buffer_size = 256M</span><br><span class="line">max_allowed_packet = 1M</span><br><span class="line">table_open_cache = 256</span><br><span class="line"># Remove leading # to set options mainly useful for reporting servers.</span><br><span class="line"># The server defaults are faster for transactions and fast SELECTs.</span><br><span class="line"># Adjust sizes as needed, experiment to find the optimal values.</span><br><span class="line"># join_buffer_size = 128M</span><br><span class="line">sort_buffer_size = 1M</span><br><span class="line">read_buffer_size = 1M</span><br><span class="line">read_rnd_buffer_size = 1M</span><br><span class="line">myisam_sort_buffer_size = 64M</span><br><span class="line">thread_cache_size = 8</span><br><span class="line">query_cache_size= 16M</span><br><span class="line">innodb_file_per_table = on</span><br><span class="line">thread_concurrency = 8</span><br><span class="line">skip_name_resolve = on</span><br><span class="line">sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES</span><br></pre></td></tr></table></figure></p>
+<img src="/2018/02/28/技术/mysql/技术-mysql-13-集群（负载均衡与高可用）/2.png">
+<p><strong>配置文件【从】</strong><br>slave配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line"># Remove leading # and set to the amount of RAM for the most important data</span><br><span class="line"># cache in MySQL. Start at 70% of total RAM for dedicated server, else 10%.</span><br><span class="line"># innodb_buffer_pool_size = 128M</span><br><span class="line"># Remove leading # to turn on a very important data integrity option: logging</span><br><span class="line"># changes to the binary log between backups.</span><br><span class="line"># log_bin</span><br><span class="line"># These are commonly set, remove the # and set as required.</span><br><span class="line"># basedir = .....</span><br><span class="line">datadir = /home/mydata/data</span><br><span class="line">port = 3306</span><br><span class="line"></span><br><span class="line">server_id = 2</span><br><span class="line">relay-log = relay-bin</span><br><span class="line"></span><br><span class="line">pid-file = /home/mydata/data/mysql.pid</span><br><span class="line">socket = /var/lib/mysql/mysql.sock</span><br><span class="line">skip-external-locking</span><br><span class="line">key_buffer_size = 256M</span><br><span class="line">max_allowed_packet = 1M</span><br><span class="line">table_open_cache = 256</span><br><span class="line"># Remove leading # to set options mainly useful for reporting servers.</span><br><span class="line"># The server defaults are faster for transactions and fast SELECTs.</span><br><span class="line"># Adjust sizes as needed, experiment to find the optimal values.</span><br><span class="line"># join_buffer_size = 128M</span><br><span class="line">sort_buffer_size = 1M</span><br><span class="line">read_buffer_size = 1M</span><br><span class="line">read_rnd_buffer_size = 1M</span><br><span class="line">myisam_sort_buffer_size = 64M</span><br><span class="line">thread_cache_size = 8</span><br><span class="line">query_cache_size= 16M</span><br><span class="line">innodb_file_per_table = on</span><br><span class="line">thread_concurrency = 8</span><br><span class="line">skip_name_resolve = on</span><br><span class="line">sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES</span><br></pre></td></tr></table></figure></p>
+<img src="/2018/02/28/技术/mysql/技术-mysql-13-集群（负载均衡与高可用）/3.png">
+<p><strong>初始化MySQL</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#/usr/bin/mysql_install_db --datadir=/usr/local/work/mydata --user=mysql</span><br></pre></td></tr></table></figure>
+<p><strong>启动服务</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#service mysql start</span><br></pre></td></tr></table></figure>
+<p><strong>设置root密码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#mysql&gt;SET PASSWORD FOR &apos;root&apos;@&apos;localhost&apos; = PASSWORD(&apos;123456&apos;);</span><br></pre></td></tr></table></figure>
+<p><strong>【主节点】授权复制权限账号给从节点</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#mysql&gt;grant replication client,replication slave on *.* to &apos;repuser&apos;@&apos;192.168.%.%&apos; identified by &apos;reppasswd&apos;;</span><br><span class="line">#mysql&gt;flush privileges;</span><br></pre></td></tr></table></figure>
+<p><strong>查看状态</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#mysql&gt;show master status;</span><br><span class="line">Slave_IO_Running: Yes</span><br><span class="line">Slave_SQL_Running: Yes</span><br></pre></td></tr></table></figure>
+<p>【从节点】指定主节点，复制账号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#mysql&gt;change master to master_host=&apos;192.168.1.6&apos;,master_user=&apos;repuser&apos;,master_password=&apos;reppasswd&apos;,master_log_file=&apos;master-bin.000001&apos;,master_log_pos=120;</span><br></pre></td></tr></table></figure>
+<p><strong>查看状态</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#mysql&gt;show slave status\G</span><br><span class="line">Slave_IO_Running: Yes</span><br><span class="line">Slave_SQL_Running: Yes</span><br></pre></td></tr></table></figure>
+<p>备注：这里只讲到mysql主从复制，但没有讲到如何实现高可用，可以利用keepalived来实现。</p>
 
       
     </div>
@@ -491,8 +524,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/teaser.png"
@@ -507,7 +549,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">69</span>
+                <span class="site-state-item-count">68</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -596,6 +638,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#主从复制"><span class="nav-number">1.</span> <span class="nav-text">主从复制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、简述原理："><span class="nav-number">1.1.</span> <span class="nav-text">一、简述原理：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、准备工作："><span class="nav-number">1.2.</span> <span class="nav-text">二、准备工作：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、安装mysql5-6"><span class="nav-number">1.3.</span> <span class="nav-text">三、安装mysql5.6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、修改配置文件"><span class="nav-number">1.4.</span> <span class="nav-text">四、修改配置文件</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
