@@ -122,7 +122,7 @@
 <meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/27.png">
 <meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/28.png">
 <meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/29.png">
-<meta property="og:updated_time" content="2018-03-02T08:45:45.216Z">
+<meta property="og:updated_time" content="2018-03-02T08:55:51.202Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="技术-mysql-2.安装">
 <meta name="twitter:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/mysql.png">
@@ -518,7 +518,7 @@
 <p>4.将mysql源代码安装包解压</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf xxxx.tar.gz</span><br></pre></td></tr></table></figure>
 <p>5.将编译脚本放置在解压的安装包目录下<br>6.创建安装mysql的非可登录用户<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd mysql -s /sbin/nologin</span><br></pre></td></tr></table></figure></p>
-<p>7.运行cmake.sh<br>8.根据提示错误信息进行一些包的补充安装（mysql5.7需要有boost类库，所以参数中需要增加此参数项）<br>9.gmake或make install 直接一步编译与安装<br>10.安装完成后，进入到安装主目录，即/usr/local/mysql，可查看到相应文件<br>11.进入/usr/local/mysql/support-files目录，将mysql.server复制到/etc/init.d/目录下作为服务，方便以后启停mysql服务<br>12.将/usr/local/mysql/support-files下的my.cnf拷贝到/etc/my.cnf作为mysql的主配置文件（通常发行版本中已经自带了该配置文件，可以直接覆盖替换），并进行相关的配置选项进行修改（实际上你不指定my.cnf配置文件，mysql的服务也可以启动起来，之所以指定my.cnf的原因是我们可以在配置文件中可以调配mysql的运行方式，所以可以根据你的生产环境来自定义调配）</p>
+<p>7.运行<code>cmake.sh</code><br>8.根据提示错误信息进行一些包的补充安装（mysql5.7需要有boost类库，所以参数中需要增加此参数项）<br>9.<code>gmake</code>或<code>make install</code>直接一步编译与安装<br>10.安装完成后，进入到安装主目录，即<code>/usr/local/mysql</code>，可查看到相应文件<br>11.进入<code>/usr/local/mysql/support-files</code>目录，将<code>mysql.server</code>复制到<code>/etc/init.d/</code>目录下作为服务，方便以后启停mysql服务<br>12.将<code>/usr/local/mysql/support-files</code>下的<code>my.cnf</code>拷贝到<code>/etc/my.cnf</code>作为<code>mysql</code>的主配置文件（通常发行版本中已经自带了该配置文件，可以直接覆盖替换），并进行相关的配置选项进行修改（实际上你不指定my.cnf配置文件，mysql的服务也可以启动起来，之所以指定my.cnf的原因是我们可以在配置文件中可以调配mysql的运行方式，所以可以根据你的生产环境来自定义调配）</p>
 <p>13.将相关目录的所属用户与组设置为mysql以提供权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /var/lib/mysql</span><br><span class="line">chown -R mysql.mysql /usr/lib/mysql</span><br></pre></td></tr></table></figure></p>
 <p>14.（重要）使用源码安装的mysql，编译安装完成后需要进行初始化，才可以启动服务，切记。<br>到mysql的安装主目录，即/usr/local/mysql目录下执行：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">5.6版本：</span><br><span class="line">/usr/local/mysql/scripts目录下</span><br><span class="line">有脚本文件：mysql_install_db  --help  #查看选项帮助</span><br><span class="line">执行脚本：mysql_install_db --basedir=/usr/local/mysql --datadir=/var/lib/mysql --no-defaults --user=mysql 	</span><br><span class="line">		</span><br><span class="line">5.7版本：</span><br><span class="line">/usr/local/mysql/bin目录下</span><br><span class="line">执行脚本：mysql_install_db（同上写法或执行下面的脚本）</span><br><span class="line">执行脚本./mysqld --defaults-file=/etc/my.cnf --user=mysql --initialize --initialize-insecure</span><br></pre></td></tr></table></figure>
@@ -535,8 +535,8 @@
 <p>9.使用rpmbuild来创建出构建目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpmbuild ~</span><br></pre></td></tr></table></figure></p>
 <p>10.该rpmbuild目录下有相应生成的文件（如：BUILD  BUILDROOT  RPMS  SOURCES  SPECS  SRPMS），最后执行构建的时候需要这几个文件来存放生成的文件和一些中间文件</p>
 <p>11.环境构建好之后，安装srpm包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh mysql-community-5.7.13-1.el6.src.rpm</span><br></pre></td></tr></table></figure></p>
-<p>12.修改/home/mysql/rpmbuild/SPECS/下的mysql.spec文件，根据自己的需要定制即可</p>
-<p>13.执行命令rpmbuild -bb mysql.spec 就会根据spec中的配置构建出rpm包来了，如果有错误提示，根据错误提示安装相应的依赖包即可。查看选项帮助：<code>rpmbuild --help</code> </p>
+<p>12.修改<code>/home/mysql/rpmbuild/SPECS/</code>下的<code>mysql.spec</code>文件，根据自己的需要定制即可</p>
+<p>13.执行命令<code>rpmbuild -bb mysql.spec</code>就会根据<code>spec</code>中的配置构建出<code>rpm</code>包来了，如果有错误提示，根据错误提示安装相应的依赖包即可。查看选项帮助：<code>rpmbuild --help</code> </p>
 <p>通常需要这些依赖库包：</p>
 <ul>
 <li>cmake</li>
@@ -546,7 +546,7 @@
 <li>numactl-devel</li>
 <li>openssl-devel</li>
 </ul>
-<p>14.这个构建的过程会耗费更长的时间，因为它需要构建出源码包、SRPM包、RPM包<br>15.构建完成后，我们可以在/home/mysql/rpmbuild/RPMS这里查看到我们自定义构建生成的RPM包<br>16.然后就可以对使用rpm -ivh 或yum install的方式来安装这些构建的mysql的rpm包了。</p>
+<p>14.这个构建的过程会耗费更长的时间，因为它需要构建出<code>源码包</code>、<code>SRPM</code>包、<code>RPM</code>包<br>15.构建完成后，我们可以在<code>/home/mysql/rpmbuild/RPMS</code>这里查看到我们自定义构建生成的<code>RPM</code>包<br>16.然后就可以对使用<code>rpm -ivh</code> 或<code>yum install</code>的方式来安装这些构建的<code>mysql</code>的<code>rpm</code>包了。</p>
 <hr>
 <h3 id="安装（linux平台-glibc包）"><a href="#安装（linux平台-glibc包）" class="headerlink" title="安装（linux平台-glibc包）"></a>安装（linux平台-glibc包）</h3><blockquote>
 <p>官方二进制包，解压即用，方便快速部署</p>
@@ -563,7 +563,7 @@
 <p>12.服务开启<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysql start</span><br></pre></td></tr></table></figure></p>
 <p>13.客户端登录测试并设置密码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql</span><br><span class="line">set password = password(&apos;luojie&apos;);</span><br></pre></td></tr></table></figure>
-<p>14.（推荐）可以执行/usr/local/mysql/bin目录下的mysql_secure_installation（安全初始化）或mysqladmin（为root设置密码）</p>
+<p>14.（推荐）可以执行<code>/usr/local/mysql/bin</code>目录下的<code>mysql_secure_installation</code>（安全初始化）或<code>mysqladmin</code>（为root设置密码）</p>
 <hr>
 <h3 id="安装（windows平台）"><a href="#安装（windows平台）" class="headerlink" title="安装（windows平台）"></a>安装（windows平台）</h3><p>在windows平台下有两种安装文件类型：<code>msi</code>和<code>zip</code>包，操作方式都类似，都是双击可执行文件进行安装的。 如果是msi直接双击运行安装即可，如果是zip，双击解压缩，运行“setup.exe”。</p>
 <p>以下说明是基于mysql 5.5之前的界面（包括5.5），5.6开始不是这种安装界面（类似不再赘述）</p>
