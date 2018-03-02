@@ -96,7 +96,7 @@
 <meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-13-集群（负载均衡与高可用）/1.png">
 <meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-13-集群（负载均衡与高可用）/2.png">
 <meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-13-集群（负载均衡与高可用）/3.png">
-<meta property="og:updated_time" content="2018-03-02T09:48:45.881Z">
+<meta property="og:updated_time" content="2018-03-02T09:56:31.882Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="技术-mysql-13.集群（负载均衡与高可用）">
 <meta name="twitter:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-13-集群（负载均衡与高可用）/mysql.png">
@@ -402,8 +402,7 @@
         <img src="/2018/02/28/技术/mysql/技术-mysql-13-集群（负载均衡与高可用）/mysql.png">
 <p><br><br><a id="more"></a></p>
 <h2 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h2><hr>
-<p>参考自：<a href="http://www.toutiao.com/i6382146078900224514/?tt_from=mobile_qq&amp;utm_campaign=client_share&amp;app=news_article&amp;utm_source=mobile_qq&amp;iid=6169066316&amp;utm_medium=toutiao_ios" target="_blank" rel="noopener">http://www.toutiao.com/i6382146078900224514/?tt_from=mobile_qq&amp;utm_campaign=client_share&amp;app=news_article&amp;utm_source=mobile_qq&amp;iid=6169066316&amp;utm_medium=toutiao_ios</a></p>
-<p>作者：郭莺莺 </p>
+<p>参考自：<br><a href="http://www.toutiao.com/i6382146078900224514/?tt_from=mobile_qq&amp;utm_campaign=client_share&amp;app=news_article&amp;utm_source=mobile_qq&amp;iid=6169066316&amp;utm_medium=toutiao_ios" target="_blank" rel="noopener">http://www.toutiao.com/i6382146078900224514/?tt_from=mobile_qq&amp;utm_campaign=client_share&amp;app=news_article&amp;utm_source=mobile_qq&amp;iid=6169066316&amp;utm_medium=toutiao_ios</a><br>作者：郭莺莺 </p>
 <hr>
 <h3 id="一、简述原理："><a href="#一、简述原理：" class="headerlink" title="一、简述原理："></a>一、简述原理：</h3><img src="/2018/02/28/技术/mysql/技术-mysql-13-集群（负载均衡与高可用）/1.png">
 <p>1、master记录二进制日志<br>2、slave的I/O线程读取master的二进制日志，并将其写入到中继日志中，SQL线程从中继日志中读取时间，并重放其中事件，更新slave的数据</p>
