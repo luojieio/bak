@@ -122,7 +122,7 @@
 <meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/27.png">
 <meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/28.png">
 <meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/29.png">
-<meta property="og:updated_time" content="2018-02-28T09:54:16.842Z">
+<meta property="og:updated_time" content="2018-03-02T08:35:14.254Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="技术-mysql-2.安装">
 <meta name="twitter:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/mysql.png">
@@ -427,56 +427,52 @@
       
         <img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/mysql.png">
 <p><br><br><a id="more"></a></p>
-<h3 id="安装（linux平台-RPM包）"><a href="#安装（linux平台-RPM包）" class="headerlink" title="安装（linux平台-RPM包）"></a>安装（linux平台-RPM包）</h3><p>当前主流的Linux发行版本中都已经集成mysql，可以直接安装使用，但可能版本较旧。因此，可以前往官网下载最新版本的安装介质，有<code>RPM</code>包和<code>tar</code>包，官方不建议我们使用源码包安装，直接使用rpm包安装即可。</p>
-<p>RPM包来源方式分为两类：</p>
+<h3 id="安装（linux平台-RPM包）"><a href="#安装（linux平台-RPM包）" class="headerlink" title="安装（linux平台-RPM包）"></a>安装（linux平台-RPM包）</h3><p>当前主流的Linux发行版本中都已经集成mysql，可以直接安装使用，但可能<code>版本较旧</code>。因此，可以前往官网下载最新版本的安装介质，有<code>rpm</code>包和<code>tar</code>包，官方不建议我们使用源码包安装，直接使用<code>rpm</code>包安装即可。</p>
+<p>rpm包来源方式分为两类：</p>
 <ul>
-<li>直接从操作系统发行版本中自带的RPM包进行安装</li>
-<li>从官方网站下载RPM包进行安装</li>
+<li>直接从操作系统发行版本中自带的<code>rpm</code>包进行安装</li>
+<li>从官方网站下载<code>rpm</code>包进行安装</li>
 </ul>
 <hr>
-<h4 id="系统自带RPM包安装"><a href="#系统自带RPM包安装" class="headerlink" title="系统自带RPM包安装"></a>系统自带RPM包安装</h4><p>1.借助软件包管理工具如yum或apt-get可以更方便的进行二进制包的安装（帮助自动解决依赖包关系）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看当前系统自带的mysql RPM包</span></span><br><span class="line">yum list|grep mysql</span><br><span class="line"></span><br><span class="line"><span class="comment">#进行安装</span></span><br><span class="line">yum install mysql mysql-server mysql-devel</span><br></pre></td></tr></table></figure></p>
+<h4 id="系统自带rpm包安装"><a href="#系统自带rpm包安装" class="headerlink" title="系统自带rpm包安装"></a>系统自带rpm包安装</h4><p>1.借助软件包管理工具如<code>yum</code>或<code>apt-get</code>可以更方便的进行二进制包的安装（帮助自动解决包的依赖关系）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看当前系统自带的mysql rpm包</span></span><br><span class="line">yum list|grep mysql</span><br><span class="line"></span><br><span class="line"><span class="comment">#进行安装</span></span><br><span class="line">yum install mysql mysql-server mysql-devel</span><br></pre></td></tr></table></figure></p>
 <p>如图：<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/1.png"></p>
-<p>2.mysql安装完成后，需要一个初始化的过程，其实只要我们把mysql的服务启动起来，它就会自动完成初始化。<br>如下图所示，前面这部份内容其实就是初始化的过程，它只在第一次启动时需要进行初始化，下一次启动就不会显示这些内容了。<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/2.png"></p>
+<p>2.mysql安装完成后，需要一个初始化的过程，其实只要我们把mysql的服务启动起来，它就会自动完成初始化。如下图所示，前面这部份内容其实就是初始化的过程，它只在第一次启动时需要进行初始化，下一次启动就不会显示这些内容了。<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/2.png"></p>
 <p>3.按提示内容设置密码（没有报错则说明安装成功）<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/3.png"></p>
 <p>4.设置好密码后，测试登录<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/4.png"></p>
 <p>5.将我们的mysql服务设置成开机启动<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/5.png"></p>
 <blockquote>
-<p>注意：从MYSQL5.1开始MYSQL的官方下载版本的服务名称改为mysql，将不再是mysqld。而rhel自带的发行版本的mysql名称依然沿用mysqld，这点区别需要特别注意。</p>
+<p>注意：从mysql5.1开始mysql的官方下载版本的服务名称改为mysql，将不再是mysqld。而rhel自带的发行版本的mysql名称依然沿用mysqld，这点区别需要特别注意。</p>
 </blockquote>
 <hr>
-<h4 id="官网下载RPM包进行安装"><a href="#官网下载RPM包进行安装" class="headerlink" title="官网下载RPM包进行安装"></a>官网下载RPM包进行安装</h4><p>1.前往官方网站下载rpm安装包，或直接在服务器上通过wget下载官方rpm安装包<br>MySQL官方网站：<a href="http://www.mysql.com/downloads/" target="_blank" rel="noopener">http://www.mysql.com/downloads/</a></p>
+<h4 id="官网下载rpm包进行安装"><a href="#官网下载rpm包进行安装" class="headerlink" title="官网下载rpm包进行安装"></a>官网下载rpm包进行安装</h4><p>1.前往官方网站下载<code>rpm</code>安装包，或直接在服务器上通过<code>wget</code>下载官方<code>rpm</code>安装包<br>MySQL官方网站：<a href="http://www.mysql.com/downloads/" target="_blank" rel="noopener">http://www.mysql.com/downloads/</a></p>
 <img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/6.png">
-<p>2.下载后使用rpm -ivh 或yum 方式安装即可</p>
+<p>2.下载后使用<code>rpm -ivh</code> 或<code>yum</code>方式安装即可</p>
 <hr>
-<h3 id="安装（linux平台-yum）"><a href="#安装（linux平台-yum）" class="headerlink" title="安装（linux平台-yum）"></a>安装（linux平台-yum）</h3><p>前往官方网站下载yum源的rpm包，或直接在服务器上使用wget的方式下载该包到服务器上，执行安装该rpm包</p>
-<p>安装好该yum源的rpm包后，会自动在/etc/yum.repos.d目录下创建yum仓库的配置文件</p>
-<p>再使用yum install mysql的方式进行安装，它就会直接从mysql的官方仓库下载并安装mysql</p>
+<h3 id="安装（linux平台-yum）"><a href="#安装（linux平台-yum）" class="headerlink" title="安装（linux平台-yum）"></a>安装（linux平台-yum）</h3><p>前往官方网站下载<code>yum</code>源的<code>rpm</code>包，或直接在服务器上使用<code>wget</code>的方式下载该包到服务器上，执行安装该<code>rpm</code>包，安装好该<code>yum</code>源的<code>rpm</code>包后，会自动在<code>/etc/yum.repos.d</code>目录下创建<code>yum</code>仓库的配置文件。再使用<code>yum install mysql</code>的方式进行安装，它就会直接从<code>mysql</code>的官方仓库下载并安装<code>mysql</code></p>
 <hr>
-<h3 id="安装（linux平台-源码包）"><a href="#安装（linux平台-源码包）" class="headerlink" title="安装（linux平台-源码包）"></a>安装（linux平台-源码包）</h3><p>使用源码通常用于<code>开发、调试、测试环境</code>这种需要定制的小范围内使用，通常生产环境这种大规模部署环境不推荐使用源码安装，因为这样做不仅不利于规模化批量部署，版本无法统一，碎片化严重，而且安装时间长难以控制。</p>
-<p>使用源码安装主要是用于定制编译参数，比如：安装位置，目录位置，功能开关开启或关闭等等。</p>
+<h3 id="安装（linux平台-源码包）"><a href="#安装（linux平台-源码包）" class="headerlink" title="安装（linux平台-源码包）"></a>安装（linux平台-源码包）</h3><p>使用源码通常用于<code>开发、调试、测试环境</code>这种需要定制的小范围内使用，通常生产环境这种大规模部署环境不推荐使用源码安装，因为这样做不仅不利于规模化批量部署，版本无法统一，碎片化严重，而且安装时间长难以控制。<br>使用源码安装主要是用于定制编译参数，比如：安装位置，目录位置，功能开关开启或关闭等等。</p>
 <p>用源码安装有两个好处：</p>
 <ul>
 <li>自定义所需要的模块</li>
 <li>自定义安装路径</li>
 </ul>
 <blockquote>
-<p>注意：以源代码包安装mysql时写的参数，如果没有写的参数，有默认值的参数会选择采取默认值，没有默认值的参数这部分就被忽略了！</p>
+<p>注意：以源代码包安装mysql时，如果没有写的参数，有默认值的参数会选择采取默认值，没有默认值的参数这部分就被忽略了！</p>
 </blockquote>
 <hr>
-<p>##旧的编译三板斧<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure></p>
+<p>旧的编译三板斧<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure></p>
 <hr>
-<p>##新的编译三板斧<br>支持跨平台，从mysql5.6开始以这种方式来编译安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cmake . -DCMAKE_INSTALL_PREFIX=     #.是指当前目录，-D是声明参数的意思</span><br><span class="line">gmake</span><br><span class="line">make install</span><br></pre></td></tr></table></figure></p>
+<p>新的编译三板斧<br>支持跨平台，从<code>mysql5.6</code>开始以这种方式来编译安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cmake . -DCMAKE_INSTALL_PREFIX=     #.是指当前目录，-D是声明参数的意思</span><br><span class="line">gmake</span><br><span class="line">make install</span><br></pre></td></tr></table></figure></p>
 <hr>
-<p>###编译脚本<br>mysql 5.7版本因为需要使用boost类库，所以在编译安装时需要带上这段参数：<code>-DDOWNLOAD_BOOST=1 -DWITH_BOOST=/usr/local/src/mysql-5.7.13/boost</code>   如果不带上的话编译过程中也会报错提示你带上这段参数的，所指向的boost目录是mysql已自带有boost的安装包</p>
+<h4 id="编译脚本（下一步会用到）"><a href="#编译脚本（下一步会用到）" class="headerlink" title="编译脚本（下一步会用到）"></a>编译脚本（下一步会用到）</h4><p><code>mysql5.7</code>版本因为需要使用<code>boost</code>类库，所以在编译安装时需要带上这段参数：<code>-DDOWNLOAD_BOOST=1 -DWITH_BOOST=/usr/local/src/mysql-5.7.13/boost</code> ，如果不带上的话编译过程中也会报错提示你带上这段参数的，所指向的<code>boost</code>目录是<code>mysql</code>已自带有<code>boost</code>的安装包</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_DATADIR=/var/lib/mysql -DSYSCONFDIR=/etc -DWITH_INNOBASE_STORAGE_ENGINE=1 -DWITH_ARCHIVE_STORAGE_ENGINE=1 -DWITH_BLACKHOLE_STORAGE_ENGINE=1 -DWITH_FEDERATED_STORAGE_ENGINE=1 -DWITH_PARTITION_STORAGE_ENGINE=1 -DMYSQL_UNIX_ADDR=/tmp/mysql.sock -DENABLED_LOCAL_INFILE=1 -DWITH_EXTRA_CHARSETS=all -DDOWNLOAD_BOOST=1 -DWITH_BOOST=/usr/local/src/mysql-5.7.13/boost</span><br></pre></td></tr></table></figure>
 <p>脚本说明：<br>参数项|说明<br>–|–<br>cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql|mysql程序安装主目录<br>        -DMYSQL_DATADIR=/var/lib/mysql     |mysql数据目录<br>        -DSYSCONFDIR=/etc                         |mysql配置文件目录<br>        -DWITH_INNOBASE_STORAGE_ENGINE=1         |以下是支持各种引擎，1是开启，0是不开启<br>        -DWITH_ARCHIVE_STORAGE_ENGINE=1<br>     -DWITH_BLACKHOLE_STORAGE_ENGINE=1 <br>-DWITH_FEDERATED_STORAGE_ENGINE=1<br>-DWITH_PARTITION_STORAGE_ENGINE=1 <br>|特别注意分区的引擎<br>        -DMYSQL_UNIX_ADDR=/tmp/mysql.sock |<br>        -DENABLED_LOCAL_INFILE=1             |    实验环境可打开，生产环境建议关闭<br>        -DWITH_EXTRA_CHARSETS=all        |        #扩展的字符集，支持全部</p>
 <hr>
-<p>##源码编译安装全过程<br>1.配置好网络环境和selinux和iptables<br>2.安装开发工具包（强烈要求，可以避免后续编译过程中报的很多依赖关系包缺失错误）</p>
+<h4 id="源码编译安装全过程"><a href="#源码编译安装全过程" class="headerlink" title="源码编译安装全过程"></a>源码编译安装全过程</h4><p>1.配置好网络环境和<code>selinux</code>和<code>iptables</code><br>2.安装开发工具包（强烈要求，可以避免后续编译过程中报的很多依赖关系包缺失错误）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum groupinstall &apos;Development tools&apos;</span><br></pre></td></tr></table></figure>
 <p>3.安装cmake</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install cmake</span><br></pre></td></tr></table></figure>
-<p>安装相关包</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Debian/Ubuntu：libncurses5-dev</span><br><span class="line">Redhat和derivates：ncurses-devel</span><br></pre></td></tr></table></figure>
+<p>安装相关包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Debian/Ubuntu：libncurses5-dev</span><br><span class="line">Redhat和derivates：ncurses-devel</span><br></pre></td></tr></table></figure></p>
 <p>4.将mysql源代码安装包解压</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf xxxx.tar.gz</span><br></pre></td></tr></table></figure>
 <p>5.将编译脚本放置在解压的安装包目录下<br>6.创建安装mysql的非可登录用户<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd mysql -s /sbin/nologin</span><br></pre></td></tr></table></figure></p>
@@ -489,7 +485,7 @@
 <p>17.安装主机使用客户端连接测试<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure></p>
 <p>18.可以执行/usr/local/mysql/bin目录下的mysql_secure_installation（安全初始化）或mysqladmin（为root设置密码）</p>
 <hr>
-<h3 id="安装（linux平台-SPRM包）"><a href="#安装（linux平台-SPRM包）" class="headerlink" title="安装（linux平台-SPRM包）"></a>安装（linux平台-SPRM包）</h3><p>1.整理好网络与iptables和selinux<br>2.安装yum groupinstall ‘Development tools’<br>3.前往官网在源代码部分找到srpm包并下载<br>4.创建用户（默认是以普通用户来构建，root用户也可以，但是需要做一些微调，为了避免不必要的麻烦，因此我们需要先创建一个普通用户）</p>
+<h3 id="安装（linux平台-SPRM包）"><a href="#安装（linux平台-SPRM包）" class="headerlink" title="安装（linux平台-SPRM包）"></a>安装（linux平台-SPRM包）</h3><p>1.整理好网络与<code>iptables</code>和<code>selinux</code><br>2.安装<code>yum groupinstall &#39;Development tools&#39;</code><br>3.前往官网在源代码部分找到<code>srpm</code>包并下载<br>4.创建用户（默认是以普通用户来构建，<code>root</code>用户也可以，但是需要做一些微调，为了避免不必要的麻烦，因此我们需要先创建一个普通用户）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd mysql</span><br></pre></td></tr></table></figure>
 <p>5.将srpm包放到/home/mysql这个普通用户的家目录里<br>6.因为需要mysql这个普通用户来管理和使用这个包，所以修改包的权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown mysql.mysql mysql-community-5.7.13-1.el6.src.rpm</span><br></pre></td></tr></table></figure></p>
 <p>7.确认一下当前环境是否安装了rpm-build<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install rpm-build</span><br></pre></td></tr></table></figure></p>
@@ -513,8 +509,8 @@
 <h3 id="安装（linux平台-glibc包）"><a href="#安装（linux平台-glibc包）" class="headerlink" title="安装（linux平台-glibc包）"></a>安装（linux平台-glibc包）</h3><blockquote>
 <p>官方二进制包，解压即用，方便快速部署</p>
 </blockquote>
-<p>1.整理好网络与iptables和selinux<br>2.安装yum groupinstall ‘Development tools’<br>3.将包上传到/usr/local/src ，因为glibc是二进制的文件所以解压即可用。解压包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf mysql-5.7.13-linux-glibc2.5-x86_64.tar.gz</span><br></pre></td></tr></table></figure></p>
-<p>4.将解压后的二进制包直接“移动”或“复制”也可以“创建软链接”的方式命名为/usr/local/mysql，即作为mysql的主目录<br>方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">移动：mv /usr/local/src/mysql-5.7.13-linux-glibc2.5-x86_64 ../mysql</span><br><span class="line">复制：cp -a /usr/local/src/mysql-5.7.13-linux-glibc2.5-x86_64 ../mysql</span><br><span class="line">软链接：ln -s /usr/local/src/mysql-5.7.13-linux-glibc2.5-x86_64 /usr/local/mysql</span><br></pre></td></tr></table></figure></p>
+<p>1.整理好网络与<code>iptables</code>和<code>selinux</code><br>2.安装<code>yum groupinstall &#39;Development tools&#39;</code><br>3.将包上传到<code>/usr/local/src</code> ，因为<code>glibc</code>是二进制的文件所以解压即可用。解压包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf mysql-5.7.13-linux-glibc2.5-x86_64.tar.gz</span><br></pre></td></tr></table></figure></p>
+<p>4.将解压后的二进制包直接“移动”或“复制”也可以“创建软链接”的方式命名为<code>/usr/local/mysql</code>，即作为<code>mysql</code>的主目录<br>方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">移动：mv /usr/local/src/mysql-5.7.13-linux-glibc2.5-x86_64 ../mysql</span><br><span class="line">复制：cp -a /usr/local/src/mysql-5.7.13-linux-glibc2.5-x86_64 ../mysql</span><br><span class="line">软链接：ln -s /usr/local/src/mysql-5.7.13-linux-glibc2.5-x86_64 /usr/local/mysql</span><br></pre></td></tr></table></figure></p>
 <p>5.创建一个不允许登录的mysql用户及组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd -s /sbin/nologin mysql</span><br></pre></td></tr></table></figure></p>
 <p>6.创建datadir及日志存储路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /var/lib/mysql</span><br><span class="line">mkdir /var/log/mysql</span><br></pre></td></tr></table></figure></p>
 <p>7.授权<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chown -R mysql.mysql /var/lib/mysql</span><br><span class="line">chown -R mysql.mysql /var/log/mysql</span><br></pre></td></tr></table></figure></p>
@@ -554,147 +550,7 @@
 <p>21.设置完毕，按“Finish”结束mysql的安装与配置——这里有一个比较常见的错误，就是不能“Start service”，一般出现在以前有安装mysql的服务器上，解决的办法，先保证以前安装的mysql服务器彻底卸载掉了；不行的话，检查是否按上面一步所说，之前的密码是否有修改，照上面的操作；如果依然不行，将mysql安装目录下的data文件夹备份，然后删除，在安装完成后，将安装生成的 data文件夹删除，备份的data文件夹移回来，再重启mysql服务就可以了，这种情况下，可能需要将数据库检查一下，然后修复一次，防止数据出错。<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/27.png"></p>
 <p>22.提示：如果你在安装完成后没有勾选开始配置，可以自行到安装目录下，找到bin目录，双击“MySQLInstanceConfig.exe”可以开始配置。<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/28.png"></p>
 <p>另外我们也可以手动修改配置文件：<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/29.png"></p>
-<hr>
-<h3 id="安装实践"><a href="#安装实践" class="headerlink" title="安装实践"></a>安装实践</h3><p>安装方式：<br>    1.官方rpm<br>    2.官方yum<br>    3.官方源码<br>    4.官方源码rpm包（srpm）<br>    5.官方二进制包（glibc包）</p>
-<pre><code>6.发行版本自带rpm包安装或自建以CD自带为yum源安装
-</code></pre><p>=========================================================<br>1.官方rpm<br>    前往官方网站下载rpm安装包，或直接在服务器上通过wget下载官方rpm安装包</p>
-<pre><code>再执行rpm -ivh 安装即可
-</code></pre><p>=========================================================<br>2.官方yum<br>    前往官方网站下载yum源的rpm包，或直接在服务器上使用wget的方式下载该包到服务器上，执行安装该rpm包<br>    安装好该yum源的rpm包后，会自动在/etc/yum.repos.d目录下创建yum仓库的配置文件</p>
-<pre><code>再使用yum install mysql的方式进行安装，它就会直接从mysql的官方仓库下载并安装mysql
-</code></pre><p>=========================================================<br>3.官方源码</p>
-<p>使用源码通常用于开发、调试、测试环境这种比较需要定制的小范围内使用，通常生产环境这种大规模部署环境不推荐使用源码安装<br>因为这样做不仅不利于规模化批量部署，版本无法统一，碎片化严重，而且安装时间长难以控制。</p>
-<p>使用源码安装主要是用于定制编译参数，比如：安装位置，目录位置，功能开关开启或关闭等等</p>
-<p>用源码安装有两个好处：</p>
-<ul>
-<li>自定义所需要的模块</li>
-<li>自定义安装路径</li>
-</ul>
-<h2 id="注意：以源代码包安装mysql时写的参数，如果没有写的参数，有默认值的参数会选择采取默认值，没有默认值的参数这部分就被忽略了！"><a href="#注意：以源代码包安装mysql时写的参数，如果没有写的参数，有默认值的参数会选择采取默认值，没有默认值的参数这部分就被忽略了！" class="headerlink" title="注意：以源代码包安装mysql时写的参数，如果没有写的参数，有默认值的参数会选择采取默认值，没有默认值的参数这部分就被忽略了！"></a>注意：以源代码包安装mysql时写的参数，如果没有写的参数，有默认值的参数会选择采取默认值，没有默认值的参数这部分就被忽略了！</h2><p>旧的编译三板斧<br>./configure<br>make</p>
-<h2 id="make-install"><a href="#make-install" class="headerlink" title="make install "></a>make install </h2><p>新的编译三板斧（支持跨平台，从mysql5.6开始以这种方式来编译安装）<br>cmake . -DCMAKE_INSTALL_PREFIX=                #.是指当前目录，-D是声明参数的意思<br>gmake</p>
-<h2 id="make-install-1"><a href="#make-install-1" class="headerlink" title="make install"></a>make install</h2><p>编译脚本：（mysql 5.7版本因为需要使用boost类库，所以在编译安装时需要带上这段参数：-DDOWNLOAD_BOOST=1 -DWITH_BOOST=/usr/local/src/mysql-5.7.13/boost   如果不带上的话编译过程中也会报错提示你带上这段参数的，所指向的boost目录是mysql已自带有boost的安装包）</p>
-<p>#!/bin/bash</p>
-<h2 id="cmake-DCMAKE-INSTALL-PREFIX-usr-local-mysql-DMYSQL-DATADIR-var-lib-mysql-DSYSCONFDIR-etc-DWITH-INNOBASE-STORAGE-ENGINE-1-DWITH-ARCHIVE-STORAGE-ENGINE-1-DWITH-BLACKHOLE-STORAGE-ENGINE-1-DWITH-FEDERATED-STORAGE-ENGINE-1-DWITH-PARTITION-STORAGE-ENGINE-1-DMYSQL-UNIX-ADDR-tmp-mysql-sock-DENABLED-LOCAL-INFILE-1-DWITH-EXTRA-CHARSETS-all-DDOWNLOAD-BOOST-1-DWITH-BOOST-usr-local-src-mysql-5-7-13-boost"><a href="#cmake-DCMAKE-INSTALL-PREFIX-usr-local-mysql-DMYSQL-DATADIR-var-lib-mysql-DSYSCONFDIR-etc-DWITH-INNOBASE-STORAGE-ENGINE-1-DWITH-ARCHIVE-STORAGE-ENGINE-1-DWITH-BLACKHOLE-STORAGE-ENGINE-1-DWITH-FEDERATED-STORAGE-ENGINE-1-DWITH-PARTITION-STORAGE-ENGINE-1-DMYSQL-UNIX-ADDR-tmp-mysql-sock-DENABLED-LOCAL-INFILE-1-DWITH-EXTRA-CHARSETS-all-DDOWNLOAD-BOOST-1-DWITH-BOOST-usr-local-src-mysql-5-7-13-boost" class="headerlink" title="cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_DATADIR=/var/lib/mysql -DSYSCONFDIR=/etc -DWITH_INNOBASE_STORAGE_ENGINE=1 -DWITH_ARCHIVE_STORAGE_ENGINE=1 -DWITH_BLACKHOLE_STORAGE_ENGINE=1 -DWITH_FEDERATED_STORAGE_ENGINE=1 -DWITH_PARTITION_STORAGE_ENGINE=1 -DMYSQL_UNIX_ADDR=/tmp/mysql.sock -DENABLED_LOCAL_INFILE=1 -DWITH_EXTRA_CHARSETS=all -DDOWNLOAD_BOOST=1 -DWITH_BOOST=/usr/local/src/mysql-5.7.13/boost"></a>cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_DATADIR=/var/lib/mysql -DSYSCONFDIR=/etc -DWITH_INNOBASE_STORAGE_ENGINE=1 -DWITH_ARCHIVE_STORAGE_ENGINE=1 -DWITH_BLACKHOLE_STORAGE_ENGINE=1 -DWITH_FEDERATED_STORAGE_ENGINE=1 -DWITH_PARTITION_STORAGE_ENGINE=1 -DMYSQL_UNIX_ADDR=/tmp/mysql.sock -DENABLED_LOCAL_INFILE=1 -DWITH_EXTRA_CHARSETS=all -DDOWNLOAD_BOOST=1 -DWITH_BOOST=/usr/local/src/mysql-5.7.13/boost</h2><p>脚本说明：<br>cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql    #mysql程序安装主目录<br>        -DMYSQL_DATADIR=/var/lib/mysql             #mysql数据目录<br>        -DSYSCONFDIR=/etc                         #mysql配置文件目录<br>        -DWITH_INNOBASE_STORAGE_ENGINE=1         #以下是支持各种引擎，1是开启，0是不开启<br>        -DWITH_ARCHIVE_STORAGE_ENGINE=1<br>        -DWITH_BLACKHOLE_STORAGE_ENGINE=1<br>        -DWITH_FEDERATED_STORAGE_ENGINE=1<br>        -DWITH_PARTITION_STORAGE_ENGINE=1        #特别注意分区的引擎<br>        -DMYSQL_UNIX_ADDR=/tmp/mysql.sock<br>        -DENABLED_LOCAL_INFILE=1                 #实验环境可打开，生产环境建议关闭</p>
-<pre><code>-DWITH_EXTRA_CHARSETS=all                #扩展的字符集，支持全部
-</code></pre><hr>
-<p>编译安装过程：<br>    1.配置好网络环境和selinux和iptables<br>    2.安装开发工具包（强烈要求，可以避免后续编译过程中报的很多依赖关系包缺失错误）<br>        yum groupinstall ‘Development tools’<br>    3.安装cmake<br>        yum install cmake<br>      安装相关包<br>        Debian/Ubuntu：libncurses5-dev<br>        Redhat和derivates：ncurses-devel<br>    4.将mysql源代码安装包解压<br>        tar zxvf xxxx.tar.gz<br>    5.将编译脚本放置在解压的安装包目录下<br>    6.创建安装mysql的非可登录用户<br>        useradd mysql -s /sbin/nologin<br>    7.运行cmake.sh<br>    8.根据提示错误信息进行一些包的补充安装（mysql5.7需要有boost类库，所以参数中需要增加此参数项）<br>    9.gmake或make install 直接一步编译与安装</p>
-<pre><code>10.安装完成后，进入到安装主目录，即/usr/local/mysql，可查看到相应文件
-12.进入/usr/local/mysql/support-files目录，将mysql.server复制到/etc/init.d/目录下作为服务，方便以后启停mysql服务
-13.将/usr/local/mysql/support-files下的my.cnf拷贝到/etc/my.cnf作为mysql的主配置文件（通常发行版本中已经自带了该配置文件，可以直接覆盖替换） 
-   并进行相关的配置选项进行修改（实际上你不指定my.cnf配置文件，mysql的服务也可以启动起来，之所以指定my.cnf的原因是我们可以在配置文件中可以调配mysql的运行方式，所以可以根据你的生产环境来自定义调配）
-11.将相关目录的所属用户与组设置为mysql以提供权限
-    mkdir /var/lib/mysql
-    chown -R mysql.mysql /usr/lib/mysql
 
-14.（重要）使用源码安装的mysql，编译安装完成后需要进行初始化，才可以启动服务，切记。
-    到mysql的安装主目录，即/usr/local/mysql目录下执行：
-
-    5.6版本：
-        /usr/local/mysql/scripts目录下
-        有脚本文件：mysql_install_db  --help  #查看选项帮助
-        执行脚本：mysql_install_db --basedir=/usr/local/mysql --datadir=/var/lib/mysql --no-defaults --user=mysql     
-
-    5.7版本：
-        /usr/local/mysql/bin目录下
-        执行脚本：mysql_install_db（同上写法或执行下面的脚本）
-        执行脚本./mysqld --defaults-file=/etc/my.cnf --user=mysql --initialize --initialize-insecure
-
-15.启动mysql服务
-    service mysql start        
-
-16.将/usr/local/mysql/bin目录添加到环境变量，以使该bin目录下的工具可用
-    echo &apos;export PATH=$PATH:/usr/local/mysql/bin&apos; &gt;&gt; ~/.bash_profile
-    . ~/.bash_profile
-
-17.使用客户端连接测试
-    mysql -u root -p
-
-18.可以执行/usr/local/mysql/bin目录下的mysql_secure_installation（安全初始化）或mysqladmin（为root设置密码）
-</code></pre><p>=========================================================<br>4.官方源码rpm包（srpm）<br>    1.整理好网络与iptables和selinux<br>    2.安装yum groupinstall ‘Development tools’</p>
-<pre><code>3.前往官网在源代码部分找到srpm包并下载
-4.创建用户（默认是以普通用户来构建，root用户也可以，但是需要做一些微调，为了避免不必要的麻烦，因此我们需要先创建一个普通用户）
-    useradd mysql 
-
-5.将srpm包放到/home/mysql这个普通用户的家目录里
-6.因为需要mysql这个普通用户来管理和使用这个包，所以修改包的权限
-    chown mysql.mysql mysql-community-5.7.13-1.el6.src.rpm 
-
-7.确认一下当前环境是否安装了rpm-build
-    yum install rpm-build
-
-8.切换到mysql这个普通用户
-    su - mysql 
-
-9.使用rpmbuild来创建出构建目录
-    rpmbuild ~
-
-10.该rpmbuild目录下有相应生成的文件（如：BUILD  BUILDROOT  RPMS  SOURCES  SPECS  SRPMS），最后执行构建的时候需要这几个文件来存放生成的文件和一些中间文件
-
-11.环境构建好之后，安装srpm包
-    rpm -ivh mysql-community-5.7.13-1.el6.src.rpm
-
-12.修改/home/mysql/rpmbuild/SPECS/下的mysql.spec文件，根据自己的需要定制即可
-
-13.执行命令rpmbuild -bb mysql.spec 就会根据spec中的配置构建出rpm包来了，如果有错误提示，根据错误提示安装相应的依赖包即可
-查看选项帮助：rpmbuild --help 
-
-    通常需要这些依赖库包：
-        cmake
-        cmake28 （自找安装包）
-        libaio-devel
-        ncurses-devel
-        numactl-devel
-        openssl-devel
-
-14.这个构建的过程会耗费更长的时间，因为它需要构建出源码包、SRPM包、RPM包
-15.构建完成后，我们可以在/home/mysql/rpmbuild/RPMS这里查看到我们自定义构建生成的RPM包
-
-16.然后就可以对使用rpm -ivh 或yum install的方式来安装这些构建的mysql的rpm包了。
-</code></pre><p>=========================================================<br>5.官方二进制包（glibc包）–解压即用，方便快速部署<br>    1.整理好网络与iptables和selinux<br>    2.安装yum groupinstall ‘Development tools’</p>
-<pre><code>3.将包上传到/usr/local/src ，因为glibc是二进制的文件所以解压即可用。解压包
-    tar zxvf mysql-5.7.13-linux-glibc2.5-x86_64.tar.gz
-
-4.将解压后的二进制包直接“移动”或“复制”也可以“创建软链接”的方式命名为/usr/local/mysql，即作为mysql的主目录
-    方式：
-        移动：mv /usr/local/src/mysql-5.7.13-linux-glibc2.5-x86_64 ../mysql
-        复制：cp -a /usr/local/src/mysql-5.7.13-linux-glibc2.5-x86_64 ../mysql
-        软链接：ln -s /usr/local/src/mysql-5.7.13-linux-glibc2.5-x86_64 /usr/local/mysql
-
-5.创建一个不允许登录的mysql用户及组
-    useradd -s /sbin/nologin mysql
-
-6.创建datadir及日志存储路径
-     mkdir /var/lib/mysql
-     mkdir /var/log/mysql
-
-7.授权
-    chown -R mysql.mysql /var/lib/mysql
-    chown -R mysql.mysql /var/log/mysql 
-
-8.修改PATH变量
-    追加全局变量：echo &apos;export PATH=$PATH:/usr/local/mysql/bin&apos; &gt;&gt; ~/.bash_profile
-    生效：source !$
-
-9.添加使用service快速启动mysql
-    cd /usr/local/mysql/support-files/
-    cp mysql.server /etc/init.d/mysql
-
-10.修改my.cnf
-    cp my-default.cnf /etc/my.cnf
-    vim /etc/my.cnf 
-
-11.初始化mysql
-    cd /usr/local/mysql/bin 
-    ./mysqld --defaults-file=/etc/my.cnf --user=mysql --initialize --initialize-insecure
-
-12.服务开启
-    service mysql start 
-
-13.客户端登录测试并设置密码
-    mysql
-    set password = password(&apos;luojie&apos;);
-
-14.（推荐）可以执行/usr/local/mysql/bin目录下的mysql_secure_installation（安全初始化）或mysqladmin（为root设置密码）
-</code></pre>
       
     </div>
 
@@ -724,7 +580,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/28/技术/mysql/技术-mysql-1-说明/" rel="next" title="技术-mysql-1.说明">
+              <a href="/2018/02/28/技术/mysql/技术-mysql-1-说明未完/" rel="next" title="技术-mysql-1.说明">
                 <i class="fa fa-chevron-left"></i> 技术-mysql-1.说明
               </a>
             
@@ -911,7 +767,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装（linux平台-RPM包）"><span class="nav-number">1.</span> <span class="nav-text">安装（linux平台-RPM包）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#系统自带RPM包安装"><span class="nav-number">1.1.</span> <span class="nav-text">系统自带RPM包安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#官网下载RPM包进行安装"><span class="nav-number">1.2.</span> <span class="nav-text">官网下载RPM包进行安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装（linux平台-yum）"><span class="nav-number">2.</span> <span class="nav-text">安装（linux平台-yum）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装（linux平台-源码包）"><span class="nav-number">3.</span> <span class="nav-text">安装（linux平台-源码包）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装（linux平台-SPRM包）"><span class="nav-number">4.</span> <span class="nav-text">安装（linux平台-SPRM包）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装（linux平台-glibc包）"><span class="nav-number">5.</span> <span class="nav-text">安装（linux平台-glibc包）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装（windows平台）"><span class="nav-number">6.</span> <span class="nav-text">安装（windows平台）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装实践"><span class="nav-number">7.</span> <span class="nav-text">安装实践</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意：以源代码包安装mysql时写的参数，如果没有写的参数，有默认值的参数会选择采取默认值，没有默认值的参数这部分就被忽略了！"><span class="nav-number"></span> <span class="nav-text">注意：以源代码包安装mysql时写的参数，如果没有写的参数，有默认值的参数会选择采取默认值，没有默认值的参数这部分就被忽略了！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#make-install"><span class="nav-number"></span> <span class="nav-text">make install </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#make-install-1"><span class="nav-number"></span> <span class="nav-text">make install</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cmake-DCMAKE-INSTALL-PREFIX-usr-local-mysql-DMYSQL-DATADIR-var-lib-mysql-DSYSCONFDIR-etc-DWITH-INNOBASE-STORAGE-ENGINE-1-DWITH-ARCHIVE-STORAGE-ENGINE-1-DWITH-BLACKHOLE-STORAGE-ENGINE-1-DWITH-FEDERATED-STORAGE-ENGINE-1-DWITH-PARTITION-STORAGE-ENGINE-1-DMYSQL-UNIX-ADDR-tmp-mysql-sock-DENABLED-LOCAL-INFILE-1-DWITH-EXTRA-CHARSETS-all-DDOWNLOAD-BOOST-1-DWITH-BOOST-usr-local-src-mysql-5-7-13-boost"><span class="nav-number"></span> <span class="nav-text">cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_DATADIR=/var/lib/mysql -DSYSCONFDIR=/etc -DWITH_INNOBASE_STORAGE_ENGINE=1 -DWITH_ARCHIVE_STORAGE_ENGINE=1 -DWITH_BLACKHOLE_STORAGE_ENGINE=1 -DWITH_FEDERATED_STORAGE_ENGINE=1 -DWITH_PARTITION_STORAGE_ENGINE=1 -DMYSQL_UNIX_ADDR=/tmp/mysql.sock -DENABLED_LOCAL_INFILE=1 -DWITH_EXTRA_CHARSETS=all -DDOWNLOAD_BOOST=1 -DWITH_BOOST=/usr/local/src/mysql-5.7.13/boost</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装（linux平台-RPM包）"><span class="nav-number">1.</span> <span class="nav-text">安装（linux平台-RPM包）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#系统自带rpm包安装"><span class="nav-number">1.1.</span> <span class="nav-text">系统自带rpm包安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#官网下载rpm包进行安装"><span class="nav-number">1.2.</span> <span class="nav-text">官网下载rpm包进行安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装（linux平台-yum）"><span class="nav-number">2.</span> <span class="nav-text">安装（linux平台-yum）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装（linux平台-源码包）"><span class="nav-number">3.</span> <span class="nav-text">安装（linux平台-源码包）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#编译脚本（下一步会用到）"><span class="nav-number">3.1.</span> <span class="nav-text">编译脚本（下一步会用到）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#源码编译安装全过程"><span class="nav-number">3.2.</span> <span class="nav-text">源码编译安装全过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装（linux平台-SPRM包）"><span class="nav-number">4.</span> <span class="nav-text">安装（linux平台-SPRM包）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装（linux平台-glibc包）"><span class="nav-number">5.</span> <span class="nav-text">安装（linux平台-glibc包）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装（windows平台）"><span class="nav-number">6.</span> <span class="nav-text">安装（windows平台）</span></a></li></ol></div>
             
 
           </div>
