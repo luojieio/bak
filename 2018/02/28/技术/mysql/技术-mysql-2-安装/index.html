@@ -122,7 +122,7 @@
 <meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/27.png">
 <meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/28.png">
 <meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/29.png">
-<meta property="og:updated_time" content="2018-03-02T08:35:14.254Z">
+<meta property="og:updated_time" content="2018-03-02T08:45:45.216Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="技术-mysql-2.安装">
 <meta name="twitter:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/mysql.png">
@@ -466,7 +466,49 @@
 <hr>
 <h4 id="编译脚本（下一步会用到）"><a href="#编译脚本（下一步会用到）" class="headerlink" title="编译脚本（下一步会用到）"></a>编译脚本（下一步会用到）</h4><p><code>mysql5.7</code>版本因为需要使用<code>boost</code>类库，所以在编译安装时需要带上这段参数：<code>-DDOWNLOAD_BOOST=1 -DWITH_BOOST=/usr/local/src/mysql-5.7.13/boost</code> ，如果不带上的话编译过程中也会报错提示你带上这段参数的，所指向的<code>boost</code>目录是<code>mysql</code>已自带有<code>boost</code>的安装包</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_DATADIR=/var/lib/mysql -DSYSCONFDIR=/etc -DWITH_INNOBASE_STORAGE_ENGINE=1 -DWITH_ARCHIVE_STORAGE_ENGINE=1 -DWITH_BLACKHOLE_STORAGE_ENGINE=1 -DWITH_FEDERATED_STORAGE_ENGINE=1 -DWITH_PARTITION_STORAGE_ENGINE=1 -DMYSQL_UNIX_ADDR=/tmp/mysql.sock -DENABLED_LOCAL_INFILE=1 -DWITH_EXTRA_CHARSETS=all -DDOWNLOAD_BOOST=1 -DWITH_BOOST=/usr/local/src/mysql-5.7.13/boost</span><br></pre></td></tr></table></figure>
-<p>脚本说明：<br>参数项|说明<br>–|–<br>cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql|mysql程序安装主目录<br>        -DMYSQL_DATADIR=/var/lib/mysql     |mysql数据目录<br>        -DSYSCONFDIR=/etc                         |mysql配置文件目录<br>        -DWITH_INNOBASE_STORAGE_ENGINE=1         |以下是支持各种引擎，1是开启，0是不开启<br>        -DWITH_ARCHIVE_STORAGE_ENGINE=1<br>     -DWITH_BLACKHOLE_STORAGE_ENGINE=1 <br>-DWITH_FEDERATED_STORAGE_ENGINE=1<br>-DWITH_PARTITION_STORAGE_ENGINE=1 <br>|特别注意分区的引擎<br>        -DMYSQL_UNIX_ADDR=/tmp/mysql.sock |<br>        -DENABLED_LOCAL_INFILE=1             |    实验环境可打开，生产环境建议关闭<br>        -DWITH_EXTRA_CHARSETS=all        |        #扩展的字符集，支持全部</p>
+<p>脚本说明：</p>
+<table>
+<thead>
+<tr>
+<th>参数项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-DCMAKE_INSTALL_PREFIX=/usr/local/mysql</code></td>
+<td>mysql程序安装主目录 </td>
+</tr>
+<tr>
+<td><code>-DMYSQL_DATADIR=/var/lib/mysql</code></td>
+<td>mysql数据目录</td>
+</tr>
+<tr>
+<td><code>-DSYSCONFDIR=/etc</code></td>
+<td>mysql配置文件目录</td>
+</tr>
+<tr>
+<td><code>-DWITH_INNOBASE_STORAGE_ENGINE=1</code></td>
+<td>以下是支持各种引擎，1是开启，0是不开启</td>
+</tr>
+<tr>
+<td><code>-DWITH_ARCHIVE_STORAGE_ENGINE=1</code><br>     <code>-DWITH_BLACKHOLE_STORAGE_ENGINE=1</code> <br><code>-DWITH_FEDERATED_STORAGE_ENGINE=1</code><br><code>-DWITH_PARTITION_STORAGE_ENGINE=1</code> <br></td>
+<td>特别注意分区的引擎</td>
+</tr>
+<tr>
+<td><code>-DMYSQL_UNIX_ADDR=/tmp/mysql.sock</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>-DENABLED_LOCAL_INFILE=1</code></td>
+<td>实验环境可打开，生产环境建议关闭</td>
+</tr>
+<tr>
+<td><code>-DWITH_EXTRA_CHARSETS=all</code></td>
+<td>扩展的字符集，支持全部</td>
+</tr>
+</tbody>
+</table>
 <hr>
 <h4 id="源码编译安装全过程"><a href="#源码编译安装全过程" class="headerlink" title="源码编译安装全过程"></a>源码编译安装全过程</h4><p>1.配置好网络环境和<code>selinux</code>和<code>iptables</code><br>2.安装开发工具包（强烈要求，可以避免后续编译过程中报的很多依赖关系包缺失错误）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum groupinstall &apos;Development tools&apos;</span><br></pre></td></tr></table></figure>
