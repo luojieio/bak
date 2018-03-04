@@ -93,7 +93,7 @@
 <meta property="og:site_name" content="luojieio">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-9-DCL数据库控制语言/mysql.png">
-<meta property="og:updated_time" content="2018-03-02T09:30:45.998Z">
+<meta property="og:updated_time" content="2018-03-04T14:23:30.348Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="技术-mysql-9.DCL数据库控制语言">
 <meta name="twitter:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-9-DCL数据库控制语言/mysql.png">
@@ -406,7 +406,7 @@
 <li>检查用户是否具有所执行动作的权限<br>主要指<code>GRAND</code>和<code>REVOKE</code>的赋予权限和撤销权限的动作</li>
 </ol>
 <hr>
-<h4 id="授予权限：GRANT"><a href="#授予权限：GRANT" class="headerlink" title="授予权限：GRANT"></a>授予权限：GRANT</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">语法</span><br><span class="line">GRANT 权限 PRIVILEGES ON 层级 TO 用户名@发起主机 IDENTIFIED BY 密码;</span><br><span class="line">即：</span><br><span class="line">GRANT ALL PRIVILEGES ON databasename.tablename TO &apos;username&apos;@&apos;host&apos; IDENTIFIED BY 密码;</span><br></pre></td></tr></table></figure>
+<h4 id="授予权限：GRANT"><a href="#授予权限：GRANT" class="headerlink" title="授予权限：GRANT"></a>授予权限：GRANT</h4><p>语法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GRANT 权限 PRIVILEGES ON 层级 TO 用户名@发起主机 IDENTIFIED BY 密码;</span><br><span class="line">即：</span><br><span class="line">GRANT ALL PRIVILEGES ON databasename.tablename TO &apos;username&apos;@&apos;host&apos; IDENTIFIED BY 密码;</span><br></pre></td></tr></table></figure></p>
 <h5 id="1-权限"><a href="#1-权限" class="headerlink" title="1.权限"></a>1.权限</h5><table>
 <thead>
 <tr>
