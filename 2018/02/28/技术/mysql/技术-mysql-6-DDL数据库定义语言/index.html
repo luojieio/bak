@@ -93,7 +93,7 @@
 <meta property="og:site_name" content="luojieio">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-6-DDL数据库定义语言/mysql.png">
-<meta property="og:updated_time" content="2018-03-04T13:38:12.543Z">
+<meta property="og:updated_time" content="2018-03-04T14:01:22.511Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="技术-mysql-6.DDL数据库定义语言">
 <meta name="twitter:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-6-DDL数据库定义语言/mysql.png">
@@ -453,14 +453,14 @@
 <p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE testtable;</span><br></pre></td></tr></table></figure></p>
 <h4 id="修改表格"><a href="#修改表格" class="headerlink" title="修改表格"></a>修改表格</h4><h5 id="重命名表"><a href="#重命名表" class="headerlink" title="重命名表"></a>重命名表</h5><p>语法：<br><code>ALTER</code> <code>TABLE</code> oldtablename <code>RENAME</code> newtablename;</p>
 <p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE testtable RENAME newtesttable;</span><br></pre></td></tr></table></figure></p>
-<h5 id="表中添加一列"><a href="#表中添加一列" class="headerlink" title="表中添加一列"></a>表中添加一列</h5><p>语法：<br><code>ALTER</code> <code>TABLE</code> tablename <code>ADD</code> columnname type;</p>
+<h5 id="表中添加一列"><a href="#表中添加一列" class="headerlink" title="表中添加一列"></a>表中添加一列</h5><p>语法：（COLUMN即列，这个关键字可忽略）<br><code>ALTER</code> <code>TABLE</code> tablename <code>ADD</code> columnname type;<br>或<br><code>ALTER</code> <code>TABLE</code> tablename <code>ADD</code> COLUMN columnname type;</p>
 <p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE lc_course ADD link varchar(100);</span><br><span class="line">或</span><br><span class="line">ALTER TABLE lc_course ADD COLUMN link varchar(100);</span><br></pre></td></tr></table></figure></p>
-<h5 id="表中删除一列"><a href="#表中删除一列" class="headerlink" title="表中删除一列"></a>表中删除一列</h5><p>语法：<br><code>ALTER</code> <code>TABLE</code> tablesname <code>DROP</code> <code>COLUMN</code> columnname;</p>
-<p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE lc_course DROP COLUMN link;</span><br><span class="line">或</span><br><span class="line">ALTER TABLE lc_course DROP link;</span><br></pre></td></tr></table></figure></p>
+<h5 id="表中删除一列"><a href="#表中删除一列" class="headerlink" title="表中删除一列"></a>表中删除一列</h5><p>语法：<br><code>ALTER</code> <code>TABLE</code> tablesname <code>DROP</code> columnname;<br>或<br><code>ALTER</code> <code>TABLE</code> tablesname <code>DROP</code> <code>COLUMN</code> columnname;</p>
+<p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE lc_course DROP link;</span><br><span class="line">或</span><br><span class="line">ALTER TABLE lc_course DROP COLUMN link;</span><br></pre></td></tr></table></figure></p>
 <h5 id="修改列的数据类型"><a href="#修改列的数据类型" class="headerlink" title="修改列的数据类型"></a>修改列的数据类型</h5><p>语法：<br><code>ALTER</code> <code>TABLE</code> tablename <code>MODIFY</code> columnname type;</p>
-<p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE lc_course MODIFY teacher varchar(100);</span><br></pre></td></tr></table></figure></p>
-<h5 id="重命名一个列"><a href="#重命名一个列" class="headerlink" title="重命名一个列"></a>重命名一个列</h5><p>语法：<br><code>ALTER</code> <code>TABLE</code> tablename <code>CHANGE</code> <code>COLUMN</code> oldcolumnname newcolumnname type;</p>
-<p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE testtable CHANGE COLUMN old new varchar(100);</span><br></pre></td></tr></table></figure></p>
+<p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE teacher2 MODIFY teacher varchar(100);</span><br></pre></td></tr></table></figure></p>
+<h5 id="重命名一个列"><a href="#重命名一个列" class="headerlink" title="重命名一个列"></a>重命名一个列</h5><p>语法：<br><code>ALTER</code> <code>TABLE</code> tablename <code>CHANGE</code> oldcolumnname newcolumnname type;<br>或<br><code>ALTER</code> <code>TABLE</code> tablename <code>CHANGE</code> <code>COLUMN</code> oldcolumnname newcolumnname type;</p>
+<p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE testtable CHANGE old new varchar(100);</span><br></pre></td></tr></table></figure></p>
 <h4 id="查看表格"><a href="#查看表格" class="headerlink" title="查看表格"></a>查看表格</h4><h5 id="查看数据库下的有哪些表"><a href="#查看数据库下的有哪些表" class="headerlink" title="查看数据库下的有哪些表"></a>查看数据库下的有哪些表</h5><p>语法：<br><code>SHOW</code> <code>TABLES</code>;</p>
 <p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW TABLES;</span><br></pre></td></tr></table></figure></p>
 <h5 id="查看表结构"><a href="#查看表结构" class="headerlink" title="查看表结构"></a>查看表结构</h5><p>方法1：<br>语法：<br><code>SHOW</code> <code>COLUMNS</code> <code>FROM</code> testtable;</p>
