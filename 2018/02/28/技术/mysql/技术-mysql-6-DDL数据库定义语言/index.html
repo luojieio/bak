@@ -93,7 +93,7 @@
 <meta property="og:site_name" content="luojieio">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-6-DDL数据库定义语言/mysql.png">
-<meta property="og:updated_time" content="2018-03-02T12:51:40.128Z">
+<meta property="og:updated_time" content="2018-03-04T13:38:12.543Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="技术-mysql-6.DDL数据库定义语言">
 <meta name="twitter:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-6-DDL数据库定义语言/mysql.png">
@@ -414,6 +414,7 @@
 </li>
 <li>DROP<ul>
 <li>DATABASE</li>
+<li>TABLE</li>
 </ul>
 </li>
 <li><p>ALTER</p>
@@ -431,37 +432,41 @@
 <li><p>SHOW</p>
 <ul>
 <li>DATABASES</li>
+<li>TABLES</li>
 </ul>
 </li>
 <li>USE</li>
 </ul>
 <hr>
-<h3 id="作用对象-数据库"><a href="#作用对象-数据库" class="headerlink" title="作用对象-数据库"></a>作用对象-数据库</h3><h4 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h4><p>语法：<br><code>CREATE</code> <code>DATABASE</code> <code>databasename</code>;</p>
+<h3 id="作用对象-数据库"><a href="#作用对象-数据库" class="headerlink" title="作用对象-数据库"></a>作用对象-数据库</h3><h4 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h4><p>语法：<br><code>CREATE</code> <code>DATABASE</code> databasename;</p>
 <p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE testdatabase;</span><br></pre></td></tr></table></figure></p>
-<h4 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h4><p>语法：<br><code>DROP</code> <code>DATABASE</code> <code>databasename</code>;</p>
+<h4 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h4><p>语法：<br><code>DROP</code> <code>DATABASE</code> databasename;</p>
 <p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP DATABASE testdatabase;</span><br></pre></td></tr></table></figure></p>
 <h4 id="查看数据库"><a href="#查看数据库" class="headerlink" title="查看数据库"></a>查看数据库</h4><p>语法：<br><code>SHOW</code> <code>DATABASES</code>;</p>
 <p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW DATABASES;</span><br></pre></td></tr></table></figure></p>
-<h4 id="切换数据库"><a href="#切换数据库" class="headerlink" title="切换数据库"></a>切换数据库</h4><p>语法：<br><code>USE</code> <code>databasename</code>;</p>
+<h4 id="切换数据库"><a href="#切换数据库" class="headerlink" title="切换数据库"></a>切换数据库</h4><p>语法：<br><code>USE</code> databasename;</p>
 <p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">USE testdatabase;</span><br></pre></td></tr></table></figure></p>
 <hr>
-<h3 id="作用对象-数据表"><a href="#作用对象-数据表" class="headerlink" title="作用对象-数据表"></a>作用对象-数据表</h3><h4 id="创建表格"><a href="#创建表格" class="headerlink" title="创建表格"></a>创建表格</h4><p>语法:<br><code>CREATE</code> <code>TABLE</code> <code>表名称</code><br>(<br>列名称1 数据类型 [约束] [默认值],<br>列名称2 数据类型 [约束] [默认值],<br>列名称3 数据类型 [约束] [默认值],<br>…<br>)[ENGINE=存储引擎][CHARACTER SET=字符集];</p>
+<h3 id="作用对象-数据表"><a href="#作用对象-数据表" class="headerlink" title="作用对象-数据表"></a>作用对象-数据表</h3><h4 id="创建表格"><a href="#创建表格" class="headerlink" title="创建表格"></a>创建表格</h4><p>语法:<br><code>CREATE</code> <code>TABLE</code> 表名称<br>(<br>列名称1 数据类型[约束] [默认值],<br>列名称2 数据类型 [约束] [默认值],<br>列名称3 数据类型 [约束] [默认值],<br>…<br>)[ENGINE=存储引擎][CHARACTER SET=字符集];</p>
 <p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE testtable</span><br><span class="line">(</span><br><span class="line">id int,</span><br><span class="line">name varchar(50)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
-<h4 id="删除表格"><a href="#删除表格" class="headerlink" title="删除表格"></a>删除表格</h4><p>语法：<br><code>DROP</code> <code>TABLE</code> <code>tablename</code>;</p>
+<h4 id="删除表格"><a href="#删除表格" class="headerlink" title="删除表格"></a>删除表格</h4><p>语法：<br><code>DROP</code> <code>TABLE</code> tablename;</p>
 <p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE testtable;</span><br></pre></td></tr></table></figure></p>
-<h4 id="修改表格"><a href="#修改表格" class="headerlink" title="修改表格"></a>修改表格</h4><h5 id="重命名表"><a href="#重命名表" class="headerlink" title="重命名表"></a>重命名表</h5><p>语法：<br><code>ALTER</code> <code>TABLE</code> <code>oldtablename</code> <code>RENAME</code> <code>newtablename</code>;</p>
+<h4 id="修改表格"><a href="#修改表格" class="headerlink" title="修改表格"></a>修改表格</h4><h5 id="重命名表"><a href="#重命名表" class="headerlink" title="重命名表"></a>重命名表</h5><p>语法：<br><code>ALTER</code> <code>TABLE</code> oldtablename <code>RENAME</code> newtablename;</p>
 <p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE testtable RENAME newtesttable;</span><br></pre></td></tr></table></figure></p>
-<h5 id="表中添加一列"><a href="#表中添加一列" class="headerlink" title="表中添加一列"></a>表中添加一列</h5><p>语法：<br><code>ALTER</code> <code>TABLE</code> <code>tablename</code> <code>ADD</code> <code>columnname</code> <code>varchar(100)</code>;</p>
+<h5 id="表中添加一列"><a href="#表中添加一列" class="headerlink" title="表中添加一列"></a>表中添加一列</h5><p>语法：<br><code>ALTER</code> <code>TABLE</code> tablename <code>ADD</code> columnname type;</p>
 <p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE lc_course ADD link varchar(100);</span><br><span class="line">或</span><br><span class="line">ALTER TABLE lc_course ADD COLUMN link varchar(100);</span><br></pre></td></tr></table></figure></p>
-<h5 id="表中删除一列"><a href="#表中删除一列" class="headerlink" title="表中删除一列"></a>表中删除一列</h5><p>语法：<br>ALTER TABLE tablesname DROP COLUMN columnname;</p>
+<h5 id="表中删除一列"><a href="#表中删除一列" class="headerlink" title="表中删除一列"></a>表中删除一列</h5><p>语法：<br><code>ALTER</code> <code>TABLE</code> tablesname <code>DROP</code> <code>COLUMN</code> columnname;</p>
 <p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE lc_course DROP COLUMN link;</span><br><span class="line">或</span><br><span class="line">ALTER TABLE lc_course DROP link;</span><br></pre></td></tr></table></figure></p>
-<h5 id="修改列的数据类型"><a href="#修改列的数据类型" class="headerlink" title="修改列的数据类型"></a>修改列的数据类型</h5><p>语法：<br>ALTER TABLE tablename MODIFY columnname varchar(100);</p>
+<h5 id="修改列的数据类型"><a href="#修改列的数据类型" class="headerlink" title="修改列的数据类型"></a>修改列的数据类型</h5><p>语法：<br><code>ALTER</code> <code>TABLE</code> tablename <code>MODIFY</code> columnname type;</p>
 <p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE lc_course MODIFY teacher varchar(100);</span><br></pre></td></tr></table></figure></p>
-<h5 id="重命名一个列"><a href="#重命名一个列" class="headerlink" title="重命名一个列"></a>重命名一个列</h5><p>语法：<br>ALTER TABLE tablename CHANGE COLUMN columnname lecture varchar(100);</p>
-<p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE lc_course CHANGE COLUMN teacher lecture varchar(100);</span><br></pre></td></tr></table></figure></p>
-<h4 id="查看表格"><a href="#查看表格" class="headerlink" title="查看表格"></a>查看表格</h4><h5 id="查看数据库下的有哪些表"><a href="#查看数据库下的有哪些表" class="headerlink" title="查看数据库下的有哪些表"></a>查看数据库下的有哪些表</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW TABLES;</span><br></pre></td></tr></table></figure>
-<h5 id="查看表的列（即查看表结构）"><a href="#查看表的列（即查看表结构）" class="headerlink" title="查看表的列（即查看表结构）"></a>查看表的列（即查看表结构）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW COLUMNS FROM customers;</span><br></pre></td></tr></table></figure>
-<h5 id="查看表结构"><a href="#查看表结构" class="headerlink" title="查看表结构"></a>查看表结构</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DESCRIBE lc_course; 或 DESC lc_course;</span><br></pre></td></tr></table></figure>
+<h5 id="重命名一个列"><a href="#重命名一个列" class="headerlink" title="重命名一个列"></a>重命名一个列</h5><p>语法：<br><code>ALTER</code> <code>TABLE</code> tablename <code>CHANGE</code> <code>COLUMN</code> oldcolumnname newcolumnname type;</p>
+<p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE testtable CHANGE COLUMN old new varchar(100);</span><br></pre></td></tr></table></figure></p>
+<h4 id="查看表格"><a href="#查看表格" class="headerlink" title="查看表格"></a>查看表格</h4><h5 id="查看数据库下的有哪些表"><a href="#查看数据库下的有哪些表" class="headerlink" title="查看数据库下的有哪些表"></a>查看数据库下的有哪些表</h5><p>语法：<br><code>SHOW</code> <code>TABLES</code>;</p>
+<p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW TABLES;</span><br></pre></td></tr></table></figure></p>
+<h5 id="查看表结构"><a href="#查看表结构" class="headerlink" title="查看表结构"></a>查看表结构</h5><p>方法1：<br>语法：<br><code>SHOW</code> <code>COLUMNS</code> <code>FROM</code> testtable;</p>
+<p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW COLUMNS FROM customers;</span><br></pre></td></tr></table></figure></p>
+<p>方法2：<br>语法：<br><code>DESCRIBE</code> testtable 或 <code>DESC</code> testtable;</p>
+<p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DESCRIBE testtable; 或 DESC testtable;</span><br></pre></td></tr></table></figure></p>
 <hr>
 <h3 id="作用对象-服务器相关信息"><a href="#作用对象-服务器相关信息" class="headerlink" title="作用对象-服务器相关信息"></a>作用对象-服务器相关信息</h3><table>
 <thead>
@@ -500,16 +505,20 @@
 <td><code>SELECT VERSION()</code>;</td>
 </tr>
 <tr>
+<td>查询当前日期</td>
+<td><code>SELECT CURRENT_DATE;</code></td>
+</tr>
+<tr>
 <td>查询当前时间</td>
-<td><code>SELECT NOW ();</code>  或  <code>SELECT  CURRENT_DATE;</code><br>可同时执行:<br><code>SELECT  VERSION(),CURRENT_DATE;</code></td>
+<td><code>SELECT NOW();</code><br>可同时执行:<br><code>SELECT CURRENT_DATE,VERSION();</code></td>
 </tr>
 <tr>
 <td>显示当前用户</td>
 <td><code>SELECT USER():</code></td>
 </tr>
 <tr>
-<td>修改MYSQL提示符（只当前生效）</td>
-<td>方式一：连接客户端时通过参数指定<br><code>mysql -u root -p --prompt 提示符</code><br>方式二：连接上客户端后，通过prompt命令修改<br><code>prompt 提示符</code><br>MYSQL常用提示符（非全部）<br>\D    完整的日期<br>\d    当前数据库<br>\h    服务器名称<br>\u    当前用户</td>
+<td>修改MYSQL提示符（仅当前生效）</td>
+<td>方法1：连接客户端时通过参数指定<br><code>mysql -u root -p --prompt 提示符</code><br>方法2：连接上客户端后，通过prompt命令修改<br><code>prompt 提示符</code><br>MYSQL常用提示符（非全部）<br>\D    完整的日期<br>\d    当前数据库<br>\h    服务器名称<br>\u    当前用户</td>
 </tr>
 </tbody>
 </table>
@@ -730,7 +739,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#关键字摘要"><span class="nav-number">1.</span> <span class="nav-text">关键字摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用对象-数据库"><span class="nav-number">2.</span> <span class="nav-text">作用对象-数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建数据库"><span class="nav-number">2.1.</span> <span class="nav-text">创建数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除数据库"><span class="nav-number">2.2.</span> <span class="nav-text">删除数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看数据库"><span class="nav-number">2.3.</span> <span class="nav-text">查看数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#切换数据库"><span class="nav-number">2.4.</span> <span class="nav-text">切换数据库</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用对象-数据表"><span class="nav-number">3.</span> <span class="nav-text">作用对象-数据表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建表格"><span class="nav-number">3.1.</span> <span class="nav-text">创建表格</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除表格"><span class="nav-number">3.2.</span> <span class="nav-text">删除表格</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改表格"><span class="nav-number">3.3.</span> <span class="nav-text">修改表格</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#重命名表"><span class="nav-number">3.3.1.</span> <span class="nav-text">重命名表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#表中添加一列"><span class="nav-number">3.3.2.</span> <span class="nav-text">表中添加一列</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#表中删除一列"><span class="nav-number">3.3.3.</span> <span class="nav-text">表中删除一列</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修改列的数据类型"><span class="nav-number">3.3.4.</span> <span class="nav-text">修改列的数据类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#重命名一个列"><span class="nav-number">3.3.5.</span> <span class="nav-text">重命名一个列</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看表格"><span class="nav-number">3.4.</span> <span class="nav-text">查看表格</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#查看数据库下的有哪些表"><span class="nav-number">3.4.1.</span> <span class="nav-text">查看数据库下的有哪些表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看表的列（即查看表结构）"><span class="nav-number">3.4.2.</span> <span class="nav-text">查看表的列（即查看表结构）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看表结构"><span class="nav-number">3.4.3.</span> <span class="nav-text">查看表结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用对象-服务器相关信息"><span class="nav-number">4.</span> <span class="nav-text">作用对象-服务器相关信息</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#关键字摘要"><span class="nav-number">1.</span> <span class="nav-text">关键字摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用对象-数据库"><span class="nav-number">2.</span> <span class="nav-text">作用对象-数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建数据库"><span class="nav-number">2.1.</span> <span class="nav-text">创建数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除数据库"><span class="nav-number">2.2.</span> <span class="nav-text">删除数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看数据库"><span class="nav-number">2.3.</span> <span class="nav-text">查看数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#切换数据库"><span class="nav-number">2.4.</span> <span class="nav-text">切换数据库</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用对象-数据表"><span class="nav-number">3.</span> <span class="nav-text">作用对象-数据表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建表格"><span class="nav-number">3.1.</span> <span class="nav-text">创建表格</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除表格"><span class="nav-number">3.2.</span> <span class="nav-text">删除表格</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改表格"><span class="nav-number">3.3.</span> <span class="nav-text">修改表格</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#重命名表"><span class="nav-number">3.3.1.</span> <span class="nav-text">重命名表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#表中添加一列"><span class="nav-number">3.3.2.</span> <span class="nav-text">表中添加一列</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#表中删除一列"><span class="nav-number">3.3.3.</span> <span class="nav-text">表中删除一列</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修改列的数据类型"><span class="nav-number">3.3.4.</span> <span class="nav-text">修改列的数据类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#重命名一个列"><span class="nav-number">3.3.5.</span> <span class="nav-text">重命名一个列</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看表格"><span class="nav-number">3.4.</span> <span class="nav-text">查看表格</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#查看数据库下的有哪些表"><span class="nav-number">3.4.1.</span> <span class="nav-text">查看数据库下的有哪些表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看表结构"><span class="nav-number">3.4.2.</span> <span class="nav-text">查看表结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用对象-服务器相关信息"><span class="nav-number">4.</span> <span class="nav-text">作用对象-服务器相关信息</span></a></li></ol></div>
             
 
           </div>
