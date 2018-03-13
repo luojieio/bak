@@ -110,7 +110,7 @@
 <meta property="og:image" content="https://luojieio.github.io/2018/03/13/技术/linux/linux-性能调优篇/15.png">
 <meta property="og:image" content="https://luojieio.github.io/2018/03/13/技术/linux/linux-性能调优篇/16.png">
 <meta property="og:image" content="https://luojieio.github.io/2018/03/13/技术/linux/linux-性能调优篇/17.png">
-<meta property="og:updated_time" content="2018-03-13T08:34:28.027Z">
+<meta property="og:updated_time" content="2018-03-13T08:49:00.730Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux-性能调优篇">
 <meta name="twitter:image" content="https://luojieio.github.io/2018/03/13/技术/linux/linux-性能调优篇/0.jpg">
@@ -468,64 +468,44 @@
 </ul>
 <p>所以，在处理性能问题时，要纵观全局，从各个方面进行综合考虑，并且对于这些硬件层面的问题，当达到瓶颈，解决方法只能是提高硬件配置</p>
 <hr>
-<h3 id="解决问题的思路"><a href="#解决问题的思路" class="headerlink" title="解决问题的思路"></a>解决问题的思路</h3><ol>
-<li>外部网络环境</li>
-<li>服务器硬件设备</li>
-<li>操作系统</li>
-</ol>
+<h3 id="解决问题的思路"><a href="#解决问题的思路" class="headerlink" title="解决问题的思路"></a>解决问题的思路</h3><p>1.外部网络环境<br>2.服务器硬件设备<br>3.操作系统</p>
 <ul>
 <li>网络</li>
 <li>CPU</li>
 <li>内存</li>
-<li>硬盘I/O</li>
+<li>硬盘I/O<br>4.应用程序自身</li>
 </ul>
-<ol>
-<li>应用程序自身</li>
-</ol>
 <p>性能优化是一个系统工程，四个要素之间相互关联，要综合起来分析，上下游与关联周边一起分析。</p>
 <hr>
 <h3 id="CPU性能评估"><a href="#CPU性能评估" class="headerlink" title="CPU性能评估"></a>CPU性能评估</h3><h4 id="vmstat"><a href="#vmstat" class="headerlink" title="vmstat"></a>vmstat</h4><img src="/2018/03/13/技术/linux/linux-性能调优篇/1.png">
-<p>输出说明：</p>
-<ol>
-<li>procs</li>
-</ol>
+<p>输出说明：<br>1.procs</p>
 <ul>
 <li>r：表示运行和等待CPU时间片的进程数，这个值如果长期大于系统CPU的个数，就说明CPU不足，需要增加CPU</li>
 <li>b：表示在等待资源的进程数，比如正在等待I/O或内存交换等</li>
 </ul>
-<ol>
-<li>memory</li>
-</ol>
+<p>2.memory</p>
 <ul>
 <li>swpd：表示切换到内存交换区的内存数量（以KB为单位）。如果swpd的值不为0，或比较大，而且si、so的值长期为0，那么这种情况下一般不用担心，不会影响系统性能。</li>
 <li>free：表示当前空闲的物理内存数量（以KB为单位）</li>
 <li>buff：表示buffers cache的内存数量，即缓冲。一般对块设备的读写才需要缓冲</li>
 <li>cache：表示page cached的内存数量，一般作为文件系统cached，即缓存。频繁访问的文件都会被cached。如果cache值较大，就说明cached的文件数量较多，如果此时IO中的bi比较小，就说明文件系统效率比较好。</li>
 </ul>
-<ol>
-<li>swap</li>
-</ol>
+<p>3.swap</p>
 <ul>
 <li>si：表示由swap调入内存</li>
 <li>so：表示由内存调入swap，一般情况下，si、so的值都为0，如果si、so的值长期不为0，则表示系统内存不足，需要增加系统内存</li>
 </ul>
-<ol>
-<li>IO<br>显示磁盘读写状况，这里设置的bi+bo的参考值为1000，如果超过1000，而且wa值较大，则表示系统磁盘IO有问题，应该考虑提高磁盘的读写性能。</li>
-</ol>
+<p>4.IO<br>显示磁盘读写状况，这里设置的bi+bo的参考值为1000，如果超过1000，而且wa值较大，则表示系统磁盘IO有问题，应该考虑提高磁盘的读写性能。</p>
 <ul>
 <li>bi：表示从块设备读入数据的总量（即读磁盘，每秒KB）</li>
 <li>bo：表示写入到块设备的数据总量（即写磁盘，每秒KB）</li>
 </ul>
-<ol>
-<li>system<br>显示采集间隔内发生的中断数，这两个值越大，会看到由内核消耗的CPU时间就越多</li>
-</ol>
+<p>5.system<br>显示采集间隔内发生的中断数，这两个值越大，会看到由内核消耗的CPU时间就越多</p>
 <ul>
 <li>in：表示在某一时间间隔中观测到的每秒设备中断数</li>
 <li>cs：表示每秒产生的上下文切换次数</li>
 </ul>
-<ol>
-<li>CPU<br>显示了CPU的使用状态，us+sy的参考值为80%，如果us+sy大于80%，就说明可能存在CPU资源不足的情况</li>
-</ol>
+<p>6.CPU<br>显示了CPU的使用状态，us+sy的参考值为80%，如果us+sy大于80%，就说明可能存在CPU资源不足的情况</p>
 <ul>
 <li>us：用户进程消耗的CPU时间百分比。us的值比较高时，说明用户进程消耗的CPU时间多，但是如果长期大于50%，就需要考虑优化程序或算法</li>
 <li>sy：内核进程消耗的CPU时间百分比。sy的值较高时，说明内核消耗的CPU资源很多。</li>
