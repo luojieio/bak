@@ -89,18 +89,18 @@
 
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker-1.基础篇-5.数据管理">
-<meta property="og:url" content="https://luojieio.github.io/2017/03/15/技术/docker/技术-docker-1-基础篇-5-数据管理/index.html">
+<meta property="og:url" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/index.html">
 <meta property="og:site_name" content="luojieio">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/技术-docker-1-基础篇-5-数据管理/0.svg">
-<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/技术-docker-1-基础篇-5-数据管理/1.png">
-<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/技术-docker-1-基础篇-5-数据管理/2.png">
-<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/技术-docker-1-基础篇-5-数据管理/3.png">
-<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/技术-docker-1-基础篇-5-数据管理/4.png">
-<meta property="og:updated_time" content="2017-10-12T09:33:38.000Z">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/0.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/1.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/2.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/3.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/4.png">
+<meta property="og:updated_time" content="2018-03-14T03:08:27.497Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker-1.基础篇-5.数据管理">
-<meta name="twitter:image" content="https://luojieio.github.io/2017/03/15/技术/docker/技术-docker-1-基础篇-5-数据管理/0.svg">
+<meta name="twitter:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/0.png">
 
 
 
@@ -128,7 +128,7 @@
 
 
 
-  <link rel="canonical" href="https://luojieio.github.io/2017/03/15/技术/docker/技术-docker-1-基础篇-5-数据管理/"/>
+  <link rel="canonical" href="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/"/>
 
 
 
@@ -285,7 +285,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://luojieio.github.io/2017/03/15/技术/docker/技术-docker-1-基础篇-5-数据管理/">
+    <link itemprop="mainEntityOfPage" href="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="luojieio">
@@ -362,17 +362,6 @@
 
                 
                 
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/docker/基础篇/" itemprop="url" rel="index">
-                    <span itemprop="name">基础篇</span>
-                  </a>
-                </span>
-
-                
-                
               
             </span>
           
@@ -384,8 +373,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/15/技术/docker/技术-docker-1-基础篇-5-数据管理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/15/技术/docker/技术-docker-1-基础篇-5-数据管理/" itemprop="commentCount"></span>
+                <a href="/2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -411,7 +400,7 @@
       
 
       
-        <img src="/2017/03/15/技术/docker/技术-docker-1-基础篇-5-数据管理/0.svg">
+        <img src="/2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/0.png">
 <p><br><br><a id="more"></a></p>
 <blockquote>
 <p>基于docker 1.12版本</p>
@@ -425,11 +414,11 @@
 <ul>
 <li>数据卷（data volumes）:用于将本地的目录或文件挂载到容器内的数据卷中，同时以实现容器与主机与容器之间的双向数据卷同步（在容器和主机、容器和容器之间共享数据，并实现数据的备份和恢复）。</li>
 </ul>
-<img src="/2017/03/15/技术/docker/技术-docker-1-基础篇-5-数据管理/1.png" title="docker数据卷双向同步图解">
+<img src="/2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/1.png" title="docker数据卷双向同步图解">
 <ul>
 <li>数据卷容器（data volume containers）：当需要挂载的数据卷信息很多时，一条条挂载就有点麻烦了，这时我们可以从专门定义一个普通的容器用于专门挂载数据卷的容器，以后别的容器需要挂载信息时，直接引用这个专门的数据卷容器就可以批量的将挂载信息挂载在别的容器上了，而不需要再一条条的挂载，而且它的作用跟数据卷一样，也是双向同步。</li>
 </ul>
-<img src="/2017/03/15/技术/docker/技术-docker-1-基础篇-5-数据管理/2.png" title="docker数据卷容器双向同步图解">
+<img src="/2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/2.png" title="docker数据卷容器双向同步图解">
 <hr>
 <h2 id="数据卷（主机挂载数据卷）"><a href="#数据卷（主机挂载数据卷）" class="headerlink" title="数据卷（主机挂载数据卷）"></a>数据卷（主机挂载数据卷）</h2><p>类似于linux下对目录或文件进行的mount挂载操作</p>
 <p>数据卷是一个可供容器使用的<code>特殊目录</code>，它绕过文件系统，可以提供很多有用的特性：</p>
@@ -440,7 +429,7 @@
 <li>卷会一直存在，直到没有容器使用</li>
 </ol>
 <p>docker数据卷架构</p>
-<img src="/2017/03/15/技术/docker/技术-docker-1-基础篇-5-数据管理/3.png" title="docker数据卷架构">
+<img src="/2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/3.png" title="docker数据卷架构">
 <hr>
 <h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3><h4 id="在容器内创建一个数据卷"><a href="#在容器内创建一个数据卷" class="headerlink" title="在容器内创建一个数据卷"></a>在容器内创建一个数据卷</h4><p>也就是在容器里创建一个目录，但这个目录是绕过文件系统的，将来可以通过挂载这个容器而将容器里的数据卷（这个特殊的目录）挂载到其它容器中</p>
 <p>在用docker run 命令的时候，使用-v标记可以在容器内创建一个数据卷。多次使用-v标记可以创建多个数据卷<br>如：</p>
@@ -554,7 +543,7 @@
 <p>通过这个双向同步机制，即使容器在运行中出现故障，用户也不必担心数据发生丢失，只需要快速地重新创建容器即可</p>
 <p>鉴于它是同步机制，所以推荐定期将主机的本地数据进行备份，或者使用支持容错的存储系统，包括RAID或分布式文件系统，如：Ceph,GPFS，HDFS等。</p>
 <hr>
-<h2 id="总结：docker数据卷与数据卷容器的对比"><a href="#总结：docker数据卷与数据卷容器的对比" class="headerlink" title="总结：docker数据卷与数据卷容器的对比"></a>总结：docker数据卷与数据卷容器的对比</h2><img src="/2017/03/15/技术/docker/技术-docker-1-基础篇-5-数据管理/4.png" title="docker数据卷与数据卷容器的对比">
+<h2 id="总结：docker数据卷与数据卷容器的对比"><a href="#总结：docker数据卷与数据卷容器的对比" class="headerlink" title="总结：docker数据卷与数据卷容器的对比"></a>总结：docker数据卷与数据卷容器的对比</h2><img src="/2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/4.png" title="docker数据卷与数据卷容器的对比">
 
       
     </div>
@@ -585,7 +574,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/15/技术/docker/技术-docker-1-基础篇-4-docker三大概念之-仓库/" rel="next" title="docker-1.基础篇-4.docker三大概念之-仓库">
+              <a href="/2017/03/15/技术/docker/docker-1-基础篇-4-docker三大概念之-仓库/" rel="next" title="docker-1.基础篇-4.docker三大概念之-仓库">
                 <i class="fa fa-chevron-left"></i> docker-1.基础篇-4.docker三大概念之-仓库
               </a>
             
@@ -595,7 +584,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/15/技术/docker/技术-docker-1-基础篇-6-网络管理/" rel="prev" title="docker-1.基础篇-6.网络管理">
+              <a href="/2017/03/15/技术/docker/docker-1-基础篇-6-网络管理/" rel="prev" title="docker-1.基础篇-6.网络管理">
                 docker-1.基础篇-6.网络管理 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -623,8 +612,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/15/技术/docker/技术-docker-1-基础篇-5-数据管理/"
-           data-title="docker-1.基础篇-5.数据管理" data-url="https://luojieio.github.io/2017/03/15/技术/docker/技术-docker-1-基础篇-5-数据管理/">
+      <div class="ds-thread" data-thread-key="2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/"
+           data-title="docker-1.基础篇-5.数据管理" data-url="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/">
       </div>
     
   </div>
@@ -682,7 +671,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

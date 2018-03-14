@@ -89,16 +89,16 @@
 
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker-1.基础篇-4.docker三大概念之-仓库">
-<meta property="og:url" content="https://luojieio.github.io/2017/03/15/技术/docker/技术-docker-1-基础篇-4-docker三大概念之-仓库/index.html">
+<meta property="og:url" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-4-docker三大概念之-仓库/index.html">
 <meta property="og:site_name" content="luojieio">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/技术-docker-1-基础篇-4-docker三大概念之-仓库/0.svg">
-<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/技术-docker-1-基础篇-4-docker三大概念之-仓库/1.png">
-<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/技术-docker-1-基础篇-4-docker三大概念之-仓库/2.png">
-<meta property="og:updated_time" content="2017-10-12T09:33:28.000Z">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-4-docker三大概念之-仓库/0.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-4-docker三大概念之-仓库/1.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-4-docker三大概念之-仓库/2.png">
+<meta property="og:updated_time" content="2018-03-14T03:09:10.267Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker-1.基础篇-4.docker三大概念之-仓库">
-<meta name="twitter:image" content="https://luojieio.github.io/2017/03/15/技术/docker/技术-docker-1-基础篇-4-docker三大概念之-仓库/0.svg">
+<meta name="twitter:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-4-docker三大概念之-仓库/0.png">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <link rel="canonical" href="https://luojieio.github.io/2017/03/15/技术/docker/技术-docker-1-基础篇-4-docker三大概念之-仓库/"/>
+  <link rel="canonical" href="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-4-docker三大概念之-仓库/"/>
 
 
 
@@ -283,7 +283,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://luojieio.github.io/2017/03/15/技术/docker/技术-docker-1-基础篇-4-docker三大概念之-仓库/">
+    <link itemprop="mainEntityOfPage" href="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-4-docker三大概念之-仓库/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="luojieio">
@@ -360,17 +360,6 @@
 
                 
                 
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/docker/基础篇/" itemprop="url" rel="index">
-                    <span itemprop="name">基础篇</span>
-                  </a>
-                </span>
-
-                
-                
               
             </span>
           
@@ -382,8 +371,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/15/技术/docker/技术-docker-1-基础篇-4-docker三大概念之-仓库/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/15/技术/docker/技术-docker-1-基础篇-4-docker三大概念之-仓库/" itemprop="commentCount"></span>
+                <a href="/2017/03/15/技术/docker/docker-1-基础篇-4-docker三大概念之-仓库/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/15/技术/docker/docker-1-基础篇-4-docker三大概念之-仓库/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -409,7 +398,7 @@
       
 
       
-        <img src="/2017/03/15/技术/docker/技术-docker-1-基础篇-4-docker三大概念之-仓库/0.svg">
+        <img src="/2017/03/15/技术/docker/docker-1-基础篇-4-docker三大概念之-仓库/0.png">
 <p><br><br><a id="more"></a></p>
 <blockquote>
 <p>基于docker 1.12版本</p>
@@ -418,12 +407,12 @@
 <p>docker三大概念：<code>镜像</code>（Image）、<code>容器</code>（Container）、<code>仓库</code>（Repository）</p>
 <p>docker命令的格式：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker [OPTIONS] subCOMMAND [OPTIONS] [arg...] [CMD] [OPTIONS] [arg...]</span><br></pre></td></tr></table></figure></p>
 <p>如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -ti 192.168.10.1/centos/centos:latest /bin/<span class="built_in">echo</span> -n <span class="string">'hello world'</span></span><br></pre></td></tr></table></figure></p>
-<img src="/2017/03/15/技术/docker/技术-docker-1-基础篇-4-docker三大概念之-仓库/1.png" title="docker命令的执行图解">
+<img src="/2017/03/15/技术/docker/docker-1-基础篇-4-docker三大概念之-仓库/1.png" title="docker命令的执行图解">
 <hr>
 <h2 id="仓库（Repository）"><a href="#仓库（Repository）" class="headerlink" title="仓库（Repository）"></a>仓库（Repository）</h2><p>其实就是一个个位于注册服务器上的“目录”，类似于代码仓库，是docker集中存放镜像文件的场所</p>
 <p>注册服务器是存放仓库的地方，其上往往存放着多个仓库。</p>
 <p>每个仓库（目录）集中存放某一类镜像，往往包括多个镜像文件，通过不同的标签（tag）来进行区分。如图：</p>
-<img src="/2017/03/15/技术/docker/技术-docker-1-基础篇-4-docker三大概念之-仓库/2.png" title="仓库和注册服务器">
+<img src="/2017/03/15/技术/docker/docker-1-基础篇-4-docker三大概念之-仓库/2.png" title="仓库和注册服务器">
 <p>根据所存储的镜像公开分享与否，docker仓库可以分为<code>公开仓库(public)</code>和<code>私有仓库(private)</code>两种形式</p>
 <p>目前最大的公开仓库是<code>Docker Hub</code> <a href="https://hub.docker.com" target="_blank" rel="noopener">https://hub.docker.com</a> （docker的官方默认仓库）<br>国内的公开仓库有：<code>灵雀云</code>、<code>时速云</code> 、<code>daocloud</code>、 <code>阿里云</code>……</p>
 <p>如果不希望公开分享自己的镜像文件，docker也支持用户在本地网络内创建一个只能自己访问的私有仓库。当用户创建了自己的镜像之后，就可以使用<code>push</code>命令将它上传到指定的公有或私有仓库。这样用户下次在另外一台机器上使用该镜像时，只需要将其从仓库上<code>pull</code>下来就可以了。</p>
@@ -573,7 +562,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/15/技术/docker/技术-docker-1-基础篇-3-docker三大概念之-容器/" rel="next" title="docker-1.基础篇-3.docker三大概念之-容器">
+              <a href="/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/" rel="next" title="docker-1.基础篇-3.docker三大概念之-容器">
                 <i class="fa fa-chevron-left"></i> docker-1.基础篇-3.docker三大概念之-容器
               </a>
             
@@ -583,7 +572,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/15/技术/docker/技术-docker-1-基础篇-5-数据管理/" rel="prev" title="docker-1.基础篇-5.数据管理">
+              <a href="/2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/" rel="prev" title="docker-1.基础篇-5.数据管理">
                 docker-1.基础篇-5.数据管理 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -611,8 +600,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/15/技术/docker/技术-docker-1-基础篇-4-docker三大概念之-仓库/"
-           data-title="docker-1.基础篇-4.docker三大概念之-仓库" data-url="https://luojieio.github.io/2017/03/15/技术/docker/技术-docker-1-基础篇-4-docker三大概念之-仓库/">
+      <div class="ds-thread" data-thread-key="2017/03/15/技术/docker/docker-1-基础篇-4-docker三大概念之-仓库/"
+           data-title="docker-1.基础篇-4.docker三大概念之-仓库" data-url="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-4-docker三大概念之-仓库/">
       </div>
     
   </div>
@@ -670,7 +659,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
